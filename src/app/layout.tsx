@@ -1,6 +1,5 @@
 import '../fonts/deneb-fonts.css';
-import { SiteDataProvider, ThemeStyles, ThemeToggle } from "@deneb-ui/ui";
-import initialSiteData from "@/data/site-data.json";
+import Providers from "./providers";
 import type { Metadata } from "next";
 
 
@@ -14,8 +13,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
-        <ThemeStyles theme={(initialSiteData as any)?.template?.structure?.theme || (initialSiteData as any)?.theme} enableDualMode /><SiteDataProvider initialSiteData={initialSiteData}>{children}</SiteDataProvider>
-        <ThemeToggle showLabel className="fixed bottom-6 left-6 z-40" /></body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
