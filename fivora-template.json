@@ -30,7 +30,22 @@
       "home.collectionCta",
       "home.emailPlaceholder",
       "home.enquireLabel",
-      "home.newsletterSuccess"
+      "home.newsletterSuccess",
+      "home.products[*].id",
+      "home.products[*].addedAt",
+      "home.products[*].featuredOrder",
+      "home.arrivals[*].id",
+      "home.arrivals[*].addedAt",
+      "home.arrivals[*].featuredOrder",
+      "collectionsPage.imageAlt",
+      "shop.emptyTitle",
+      "shop.emptyDescription",
+      "shop.selectedLabel",
+      "shop.selectionNote",
+      "shop.actionLabel",
+      "collectionsPage.collectionCta",
+      "collectionsPage.countLabel",
+      "home.collections[*].shopHref"
     ]
   },
   "siteDataFile": "src/data/site-data.json",
@@ -45,6 +60,27 @@
       "route": "/",
       "required": true,
       "description": "Luxury watch storefront homepage: curated watches, collections and brand story."
+    },
+    {
+      "id": "shop",
+      "label": "Shop",
+      "route": "/shop",
+      "required": true,
+      "description": "Search, filter and sort the shared AUREL catalog."
+    },
+    {
+      "id": "collections",
+      "label": "Collections",
+      "route": "/collections",
+      "required": true,
+      "description": "Editorial collection stories linking to the filtered Shop."
+    },
+    {
+      "id": "product_link",
+      "label": "Catalog link handoff",
+      "route": "/products/detail",
+      "required": true,
+      "description": "Routing-only compatibility page. Returns the product ID to Shop; no Watch Details UI."
     }
   ],
   "editorSchema": {
@@ -325,6 +361,21 @@
                 "label": "Contact"
               }
             ]
+          },
+          {
+            "key": "routingLabel",
+            "type": "text",
+            "label": "routingLabel"
+          },
+          {
+            "key": "routingNote",
+            "type": "text",
+            "label": "routingNote"
+          },
+          {
+            "key": "routingCta",
+            "type": "text",
+            "label": "routingCta"
           }
         ]
       },
@@ -464,59 +515,6 @@
             "label": "Enquire Label"
           },
           {
-            "key": "products",
-            "type": "list",
-            "label": "Products",
-            "itemLabel": "Product",
-            "fields": [
-              {
-                "key": "name",
-                "type": "text",
-                "label": "Name"
-              },
-              {
-                "key": "collection",
-                "type": "text",
-                "label": "Collection"
-              },
-              {
-                "key": "price",
-                "type": "text",
-                "label": "Price"
-              },
-              {
-                "key": "image",
-                "type": "image",
-                "label": "Image"
-              },
-              {
-                "key": "imageAlt",
-                "type": "text",
-                "label": "Image Alt"
-              },
-              {
-                "key": "description",
-                "type": "textarea",
-                "label": "Description"
-              },
-              {
-                "key": "availability",
-                "type": "text",
-                "label": "Availability"
-              },
-              {
-                "key": "badge",
-                "type": "text",
-                "label": "Badge"
-              },
-              {
-                "key": "href",
-                "type": "url",
-                "label": "Href"
-              }
-            ]
-          },
-          {
             "key": "collectionsEyebrow",
             "type": "text",
             "label": "Collections Eyebrow"
@@ -530,39 +528,6 @@
             "key": "collectionCta",
             "type": "text",
             "label": "Collection Cta"
-          },
-          {
-            "key": "collections",
-            "type": "list",
-            "label": "Collections",
-            "itemLabel": "Collection",
-            "fields": [
-              {
-                "key": "name",
-                "type": "text",
-                "label": "Name"
-              },
-              {
-                "key": "description",
-                "type": "textarea",
-                "label": "Description"
-              },
-              {
-                "key": "image",
-                "type": "image",
-                "label": "Image"
-              },
-              {
-                "key": "imageAlt",
-                "type": "text",
-                "label": "Image Alt"
-              },
-              {
-                "key": "href",
-                "type": "url",
-                "label": "Href"
-              }
-            ]
           },
           {
             "key": "storyEyebrow",
@@ -618,59 +583,6 @@
             "key": "arrivalsDescription",
             "type": "textarea",
             "label": "Arrivals Description"
-          },
-          {
-            "key": "arrivals",
-            "type": "list",
-            "label": "Arrivals",
-            "itemLabel": "Arrival",
-            "fields": [
-              {
-                "key": "name",
-                "type": "text",
-                "label": "Name"
-              },
-              {
-                "key": "collection",
-                "type": "text",
-                "label": "Collection"
-              },
-              {
-                "key": "price",
-                "type": "text",
-                "label": "Price"
-              },
-              {
-                "key": "image",
-                "type": "image",
-                "label": "Image"
-              },
-              {
-                "key": "imageAlt",
-                "type": "text",
-                "label": "Image Alt"
-              },
-              {
-                "key": "description",
-                "type": "textarea",
-                "label": "Description"
-              },
-              {
-                "key": "availability",
-                "type": "text",
-                "label": "Availability"
-              },
-              {
-                "key": "badge",
-                "type": "text",
-                "label": "Badge"
-              },
-              {
-                "key": "href",
-                "type": "url",
-                "label": "Href"
-              }
-            ]
           },
           {
             "key": "reviewsEyebrow",
@@ -793,6 +705,425 @@
             "type": "object",
             "label": "Guidance Notes",
             "fields": []
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "label": "Shared Catalog — Featured Selection",
+        "itemLabel": "Product",
+        "fields": [
+          {
+            "key": "name",
+            "type": "text",
+            "label": "Name"
+          },
+          {
+            "key": "collection",
+            "type": "text",
+            "label": "Collection"
+          },
+          {
+            "key": "price",
+            "type": "text",
+            "label": "Price"
+          },
+          {
+            "key": "image",
+            "type": "image",
+            "label": "Image"
+          },
+          {
+            "key": "imageAlt",
+            "type": "text",
+            "label": "Image Alt"
+          },
+          {
+            "key": "description",
+            "type": "textarea",
+            "label": "Description"
+          },
+          {
+            "key": "availability",
+            "type": "text",
+            "label": "Availability"
+          },
+          {
+            "key": "badge",
+            "type": "text",
+            "label": "Badge"
+          },
+          {
+            "key": "href",
+            "type": "url",
+            "label": "Href"
+          },
+          {
+            "key": "id",
+            "type": "text",
+            "label": "Stable product ID"
+          },
+          {
+            "key": "addedAt",
+            "type": "text",
+            "label": "Added to catalog (YYYY-MM-DD)"
+          },
+          {
+            "key": "featuredOrder",
+            "type": "number",
+            "label": "Featured sort order"
+          }
+        ],
+        "id": "home.products",
+        "path": "home.products"
+      },
+      {
+        "type": "list",
+        "label": "Shared Catalog — New Arrivals",
+        "itemLabel": "Arrival",
+        "fields": [
+          {
+            "key": "name",
+            "type": "text",
+            "label": "Name"
+          },
+          {
+            "key": "collection",
+            "type": "text",
+            "label": "Collection"
+          },
+          {
+            "key": "price",
+            "type": "text",
+            "label": "Price"
+          },
+          {
+            "key": "image",
+            "type": "image",
+            "label": "Image"
+          },
+          {
+            "key": "imageAlt",
+            "type": "text",
+            "label": "Image Alt"
+          },
+          {
+            "key": "description",
+            "type": "textarea",
+            "label": "Description"
+          },
+          {
+            "key": "availability",
+            "type": "text",
+            "label": "Availability"
+          },
+          {
+            "key": "badge",
+            "type": "text",
+            "label": "Badge"
+          },
+          {
+            "key": "href",
+            "type": "url",
+            "label": "Href"
+          },
+          {
+            "key": "id",
+            "type": "text",
+            "label": "Stable product ID"
+          },
+          {
+            "key": "addedAt",
+            "type": "text",
+            "label": "Added to catalog (YYYY-MM-DD)"
+          },
+          {
+            "key": "featuredOrder",
+            "type": "number",
+            "label": "Featured sort order"
+          }
+        ],
+        "id": "home.arrivals",
+        "path": "home.arrivals"
+      },
+      {
+        "type": "list",
+        "label": "Shared Collection Stories",
+        "itemLabel": "Collection",
+        "fields": [
+          {
+            "key": "name",
+            "type": "text",
+            "label": "Name"
+          },
+          {
+            "key": "description",
+            "type": "textarea",
+            "label": "Description"
+          },
+          {
+            "key": "image",
+            "type": "image",
+            "label": "Image"
+          },
+          {
+            "key": "imageAlt",
+            "type": "text",
+            "label": "Image Alt"
+          },
+          {
+            "key": "href",
+            "type": "url",
+            "label": "Href"
+          },
+          {
+            "key": "shopHref",
+            "type": "url",
+            "label": "Shop destination"
+          }
+        ],
+        "id": "home.collections",
+        "path": "home.collections"
+      },
+      {
+        "id": "shop",
+        "path": "shop",
+        "pageKey": "shop",
+        "type": "object",
+        "label": "Shop Page & Catalog Controls",
+        "fields": [
+          {
+            "key": "eyebrow",
+            "type": "text",
+            "label": "Eyebrow"
+          },
+          {
+            "key": "title",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "key": "description",
+            "type": "textarea",
+            "label": "Description"
+          },
+          {
+            "key": "note",
+            "type": "textarea",
+            "label": "Note"
+          },
+          {
+            "key": "searchLabel",
+            "type": "text",
+            "label": "Search Label"
+          },
+          {
+            "key": "searchPlaceholder",
+            "type": "text",
+            "label": "Search Placeholder"
+          },
+          {
+            "key": "collectionLabel",
+            "type": "text",
+            "label": "Collection Label"
+          },
+          {
+            "key": "allCollectionsLabel",
+            "type": "text",
+            "label": "All Collections Label"
+          },
+          {
+            "key": "priceLabel",
+            "type": "text",
+            "label": "Price Label"
+          },
+          {
+            "key": "minimumPriceLabel",
+            "type": "text",
+            "label": "Minimum Price Label"
+          },
+          {
+            "key": "maximumPriceLabel",
+            "type": "text",
+            "label": "Maximum Price Label"
+          },
+          {
+            "key": "minimumPlaceholder",
+            "type": "text",
+            "label": "Minimum Placeholder"
+          },
+          {
+            "key": "maximumPlaceholder",
+            "type": "text",
+            "label": "Maximum Placeholder"
+          },
+          {
+            "key": "availabilityLabel",
+            "type": "text",
+            "label": "Availability Label"
+          },
+          {
+            "key": "allAvailabilityLabel",
+            "type": "text",
+            "label": "All Availability Label"
+          },
+          {
+            "key": "availabilityOptions",
+            "type": "object",
+            "label": "Availability Options",
+            "fields": [
+              {
+                "key": "available",
+                "type": "text",
+                "label": "Available"
+              },
+              {
+                "key": "limited",
+                "type": "text",
+                "label": "Limited"
+              },
+              {
+                "key": "unavailable",
+                "type": "text",
+                "label": "Unavailable"
+              },
+              {
+                "key": "enquire",
+                "type": "text",
+                "label": "Enquire"
+              }
+            ]
+          },
+          {
+            "key": "sortLabel",
+            "type": "text",
+            "label": "Sort Label"
+          },
+          {
+            "key": "sortOptions",
+            "type": "object",
+            "label": "Sort Options",
+            "fields": [
+              {
+                "key": "featured",
+                "type": "text",
+                "label": "Featured"
+              },
+              {
+                "key": "newest",
+                "type": "text",
+                "label": "Newest"
+              },
+              {
+                "key": "priceAsc",
+                "type": "text",
+                "label": "Price Asc"
+              },
+              {
+                "key": "priceDesc",
+                "type": "text",
+                "label": "Price Desc"
+              }
+            ]
+          },
+          {
+            "key": "resetLabel",
+            "type": "text",
+            "label": "Reset Label"
+          },
+          {
+            "key": "resultsLabel",
+            "type": "text",
+            "label": "Results Label"
+          },
+          {
+            "key": "filterSummary",
+            "type": "text",
+            "label": "Filter Summary"
+          },
+          {
+            "key": "emptyTitle",
+            "type": "text",
+            "label": "Empty Title"
+          },
+          {
+            "key": "emptyDescription",
+            "type": "textarea",
+            "label": "Empty Description"
+          },
+          {
+            "key": "actionLabel",
+            "type": "text",
+            "label": "Action Label"
+          },
+          {
+            "key": "selectedLabel",
+            "type": "text",
+            "label": "Selected Label"
+          },
+          {
+            "key": "selectionNote",
+            "type": "textarea",
+            "label": "Selection Note"
+          }
+        ]
+      },
+      {
+        "id": "collectionsPage",
+        "path": "collectionsPage",
+        "pageKey": "collections",
+        "type": "object",
+        "label": "Collections Page",
+        "fields": [
+          {
+            "key": "eyebrow",
+            "type": "text",
+            "label": "Eyebrow"
+          },
+          {
+            "key": "title",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "key": "description",
+            "type": "textarea",
+            "label": "Description"
+          },
+          {
+            "key": "image",
+            "type": "image",
+            "label": "Image"
+          },
+          {
+            "key": "imageAlt",
+            "type": "text",
+            "label": "Image Alt"
+          },
+          {
+            "key": "ctaLabel",
+            "type": "text",
+            "label": "Cta Label"
+          },
+          {
+            "key": "ctaUrl",
+            "type": "url",
+            "label": "Cta Url"
+          },
+          {
+            "key": "collectionCta",
+            "type": "text",
+            "label": "Collection Cta"
+          },
+          {
+            "key": "countLabel",
+            "type": "text",
+            "label": "Count Label"
+          },
+          {
+            "key": "note",
+            "type": "textarea",
+            "label": "Note"
           }
         ]
       }

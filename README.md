@@ -1,4 +1,4 @@
-# AUREL TIMEPIECES — Phase 1
+# AUREL TIMEPIECES — Phase 2A
 
 A responsive luxury watch homepage built with Next.js 16 App Router, TypeScript, Tailwind CSS v4 and the installed Deneb UI 2.0.131. The existing ARC identity, strict Fivora manifest v2, static export configuration and `SiteDataProvider` are preserved. No packages were added.
 
@@ -18,7 +18,11 @@ The production export is `out/`. `NEXT_PUBLIC_SITE_BASE_PATH` remains supported.
 
 Announcement, responsive navigation, editorial hero, three benefits, four featured watches, four collections, brand story, four new arrivals, three testimonials, demo newsletter and footer. There is live catalog search, mobile navigation, collection filtering, an enquiry selection notice and a preview-only shopping bag notice. `/404` has an explicit fallback.
 
-Only `/` is declared in the Fivora manifest. Home, Shop, Collections, About and Contact currently navigate to homepage sections. Product links select a watch and navigate to the demo concierge in the footer. Collection links filter featured watches. Social and support links safely target the concierge until merchants configure actual destinations. Shop, product detail, cart and checkout pages are intentionally deferred.
+`/shop/` provides name search, collection/price/availability filters, featured/newest/price sorting, result counts, empty states and filter reset. Filters are stored in the query string, so collection links and copied URLs open the same selection. `/collections/` presents the four shared collections with distinct local imagery and links to the appropriately filtered Shop. Header and footer navigation use these routes; About and Contact continue to point to homepage sections. Existing homepage collection filtering, search, enquiries and newsletter behavior are preserved.
+
+Product links use Deneb's `platformProductDetailHref(id)` and its stable `/products/detail/?id=...` URL. The explicitly approved compatibility route uses `usePlatformProductDetail` with remote lookup disabled and hands the ID back to `/shop/?id=...`, where the matching catalog card is focused and highlighted. This route contains no Watch Details UI. `trailingSlash: true` exports the directory index required by Fivora's routing validator. Watch Details, Cart, Checkout and payments remain deferred.
+
+The catalog adapter reads the two existing, disjoint `home.products` and `home.arrivals` lists. It does not copy product records into Shop content, and it deduplicates stable IDs. Existing field paths remain intact. The lists are grouped as shared catalog sections in the editor schema. Stable IDs, sample catalog-added dates and featured sort order are configurable fields; displayed prices remain the single source for price filtering and sorting. Missing prices sort last and display “Price on request.”
 
 ## Fivora editing
 
@@ -27,6 +31,9 @@ Only `/` is declared in the Fivora manifest. Home, Shop, Collections, About and 
 - `src/app/providers.tsx`: explicit client boundary for Deneb's CommonJS exports.
 - `src/components/storefront/editable.tsx`: Deneb `EditableText`, `EditableImage`, `useSiteData`, `useComponentStyle`, base-path-safe assets and safe destination fallbacks.
 - `WatchBindings.tsx`: explicit dynamic field paths for featured and arrival lists; `WatchCard.tsx` supplies shared presentation.
+- `catalog.ts`: shared catalog normalization, stable IDs and native Fivora routing.
+- `SiteChrome.tsx`: shared announcement, header, mobile navigation, search, footer and bag notice.
+- `Shop.tsx` and `Collections.tsx`: editable catalog controls and editorial collection pages.
 - `Storefront.tsx`: Deneb `EditableSection` and `EditableIcon`, semantic page structure and homepage interactions.
 
 Existing homepage keys are retained with watch-specific values: `home.title`, `home.subtitle`, `home.pageTsx` (hero eyebrow), `home.nextJsLogoImage` (hero image), `home.vercelLogomarkImage` (story image), and the existing CTA label/URL pairs. Old style keys remain. New brand, navigation, section, catalog, collection, review, newsletter and footer fields are registered in `editorSchema`.
@@ -48,7 +55,9 @@ npm run build
 node scripts/verify-homepage.mjs
 ```
 
-The dependency-free QA helper serves the export temporarily and launches hidden headless Chrome. It checks rendering, image loading, local anchors, mobile navigation, filtering, search, enquiry selection, demo newsletter validation, theme switching and Fivora postMessage updates for text/images/styles/list additions and reordering. Screenshots at 320, 390, 768, 1024 and 1440px, a full-page screenshot and a JSON report are written under `.deneb/qa/` (Git-ignored). The helper stops its server and Chrome when done.
+The dependency-free QA helpers serve the export temporarily and launch hidden headless Chrome. The homepage suite checks rendering, image loading, local anchors, mobile navigation, filtering, search, enquiry selection, demo newsletter validation, theme switching and Fivora postMessage updates. Screenshots and JSON results are written under `.deneb/qa/` (Git-ignored). Helpers stop their server and Chrome when done.
+
+Run `node scripts/verify-phase2a.mjs` for Shop/Collections search, combined filters, all sort modes, reset, URL filters, four collection destinations, the native product-link handoff, mobile menus, empty arrays, missing optional fields and live content/style changes. It also checks a product added after the static build. Shop and Collections screenshots are saved at 320, 390, 768 and 1440px, plus full desktop captures. `browser-session.mjs` supports both flat and directory-index exports and optional `NEXT_PUBLIC_SITE_BASE_PATH` verification.
 
 ## Local assets and credits
 

@@ -16,7 +16,10 @@
     "engine": "NEXT_STATIC_EXPORT",
     "structure": {
       "pages": [
-        "home"
+        "home",
+        "shop",
+        "collections",
+        "product_link"
       ],
       "theme": {
         "primaryColor": "#101A2B",
@@ -43,7 +46,10 @@
   },
   "requirements": {
     "requiredPages": [
-      "home"
+      "home",
+      "shop",
+      "collections",
+      "product_link"
     ],
     "requiredFeatures": []
   },
@@ -87,19 +93,19 @@
       "footerLinks": [
         {
           "label": "All timepieces",
-          "href": "#featured"
+          "href": "/shop/"
         },
         {
           "label": "Our collections",
-          "href": "#collections"
+          "href": "/collections/"
         },
         {
           "label": "New arrivals",
-          "href": "#arrivals"
+          "href": "/shop/?sort=newest"
         },
         {
           "label": "Our story",
-          "href": "#story"
+          "href": "/#story"
         }
       ],
       "supportLinks": [
@@ -127,15 +133,18 @@
         }
       ],
       "socialNote": "Social destinations are placeholders in this preview.",
-      "homeUrl": "#top",
+      "homeUrl": "/",
       "headerCtaUrl": "#contact",
       "navUrls": {
-        "home": "#top",
-        "shop": "#featured",
-        "collections": "#collections",
-        "about": "#story",
-        "contact": "#contact"
-      }
+        "home": "/",
+        "shop": "/shop/",
+        "collections": "/collections/",
+        "about": "/#story",
+        "contact": "/#contact"
+      },
+      "routingLabel": "Opening the catalog…",
+      "routingNote": "Full watch details are reserved for a later phase.",
+      "routingCta": "Continue to Shop"
     },
     "home": {
       "nextJsLogoImage": "/images/watch-hero.webp",
@@ -148,7 +157,7 @@
       "deployNowUrl": "#arrivals",
       "deployNowLabel": "Discover new arrivals",
       "vercelLogomarkImage": "/images/watch-editorial.webp",
-      "documentationUrl": "#featured",
+      "documentationUrl": "/shop/",
       "documentationLabel": "View all timepieces",
       "pageTsx": "THE ART OF TIME",
       "heroImageAlt": "A mechanical watch with an ivory dial and brown leather strap, photographed in dramatic light",
@@ -186,7 +195,10 @@
           "description": "A refined expression of everyday elegance.",
           "availability": "Available",
           "badge": "SIGNATURE",
-          "href": "#contact"
+          "href": "#contact",
+          "id": "heritage-automatic",
+          "addedAt": "2026-10-01",
+          "featuredOrder": 0
         },
         {
           "name": "Navigator Steel",
@@ -197,7 +209,10 @@
           "description": "Purposeful engineering with a distinctive steel finish.",
           "availability": "Available",
           "badge": "",
-          "href": "#contact"
+          "href": "#contact",
+          "id": "navigator-steel",
+          "addedAt": "2026-10-02",
+          "featuredOrder": 1
         },
         {
           "name": "Méridian Chronograph",
@@ -208,7 +223,10 @@
           "description": "Precise timing, beautifully considered.",
           "availability": "Available",
           "badge": "COLLECTOR’S CHOICE",
-          "href": "#contact"
+          "href": "#contact",
+          "id": "meridian-chronograph",
+          "addedAt": "2026-10-03",
+          "featuredOrder": 2
         },
         {
           "name": "Atelier No. 01",
@@ -219,7 +237,10 @@
           "description": "For those who see the extraordinary in the details.",
           "availability": "Limited availability",
           "badge": "LIMITED EDITION",
-          "href": "#contact"
+          "href": "#contact",
+          "id": "atelier-no-01",
+          "addedAt": "2026-10-04",
+          "featuredOrder": 3
         }
       ],
       "collectionsEyebrow": "FIND YOUR EXPRESSION",
@@ -231,28 +252,32 @@
           "description": "The beauty of restraint.",
           "image": "/images/watch-classic.webp",
           "imageAlt": "Classic watch styled with understated accessories",
-          "href": "#featured"
+          "href": "#featured",
+          "shopHref": "/shop/"
         },
         {
           "name": "Sport",
           "description": "Made to move with you.",
           "image": "/images/watch-sport.webp",
           "imageAlt": "Steel sports watch with a dark dial",
-          "href": "#featured"
+          "href": "#featured",
+          "shopHref": "/shop/"
         },
         {
           "name": "Chronograph",
           "description": "Every second, considered.",
           "image": "/images/watch-hero.webp",
           "imageAlt": "Mechanical chronograph with intricate ivory dial",
-          "href": "#featured"
+          "href": "#featured",
+          "shopHref": "/shop/"
         },
         {
           "name": "Limited Edition",
           "description": "An uncommon perspective.",
           "image": "/images/watch-limited.webp",
           "imageAlt": "Gold accented watch with a woven strap",
-          "href": "#featured"
+          "href": "#featured",
+          "shopHref": "/shop/"
         }
       ],
       "storyEyebrow": "MORE THAN A MEASURE OF TIME",
@@ -276,7 +301,10 @@
           "description": "A deep blue dial made for new horizons.",
           "availability": "Available",
           "badge": "NEW ARRIVAL",
-          "href": "#contact"
+          "href": "#contact",
+          "id": "coastal-blue",
+          "addedAt": "2026-11-01",
+          "featuredOrder": 4
         },
         {
           "name": "Atelier Obsidian",
@@ -287,7 +315,10 @@
           "description": "Quiet confidence in an all-black expression.",
           "availability": "Limited availability",
           "badge": "NEW ARRIVAL",
-          "href": "#contact"
+          "href": "#contact",
+          "id": "atelier-obsidian",
+          "addedAt": "2026-11-02",
+          "featuredOrder": 5
         },
         {
           "name": "Heritage Reserve",
@@ -298,7 +329,10 @@
           "description": "Classic proportions. A fresh perspective.",
           "availability": "Available",
           "badge": "NEW ARRIVAL",
-          "href": "#contact"
+          "href": "#contact",
+          "id": "heritage-reserve",
+          "addedAt": "2026-11-03",
+          "featuredOrder": 6
         },
         {
           "name": "Méridian Rose",
@@ -309,7 +343,10 @@
           "description": "Warm metallic details and mechanical character.",
           "availability": "Available",
           "badge": "NEW ARRIVAL",
-          "href": "#contact"
+          "href": "#contact",
+          "id": "meridian-rose",
+          "addedAt": "2026-11-04",
+          "featuredOrder": 7
         }
       ],
       "reviewsEyebrow": "TIME, WELL SHARED",
@@ -348,9 +385,59 @@
       "tone": "Modern luxury, refined, editorial and welcoming",
       "outputLanguage": "English",
       "businessSummary": "AUREL TIMEPIECES is a premium luxury watch boutique, with Classic, Sport, Chronograph and Limited Edition collections.",
-      "additionalBusinessDetails": "Phase 1: homepage only. Reference watch photography, illustrative catalog and reviews. No live payment or subscription integration.",
+      "additionalBusinessDetails": "Phase 2A: homepage, Shop and Collections. Reference catalog and imagery; no watch-detail, cart, checkout or payment implementation.",
       "referenceWebsiteUrl": "",
       "guidanceNotes": {}
+    },
+    "shop": {
+      "eyebrow": "THE AUREL CATALOG",
+      "title": "Find your next chapter.",
+      "description": "Explore our considered selection of timepieces. Find the design, character and collection that speak to you.",
+      "note": "An illustrative catalog. Prices are shown in USD; photography shows reference timepieces.",
+      "searchLabel": "Search timepieces",
+      "searchPlaceholder": "Search by watch name",
+      "collectionLabel": "Collection",
+      "allCollectionsLabel": "All collections",
+      "priceLabel": "Price range · USD",
+      "minimumPriceLabel": "Minimum price",
+      "maximumPriceLabel": "Maximum price",
+      "minimumPlaceholder": "From",
+      "maximumPlaceholder": "To",
+      "availabilityLabel": "Availability",
+      "allAvailabilityLabel": "All availability",
+      "availabilityOptions": {
+        "available": "Available",
+        "limited": "Limited availability",
+        "unavailable": "Unavailable",
+        "enquire": "Enquire for availability"
+      },
+      "sortLabel": "Sort by",
+      "sortOptions": {
+        "featured": "Featured",
+        "newest": "Newest",
+        "priceAsc": "Price: low to high",
+        "priceDesc": "Price: high to low"
+      },
+      "resetLabel": "Reset filters",
+      "resultsLabel": "timepieces",
+      "filterSummary": "A considered selection, made personal.",
+      "emptyTitle": "A different moment awaits.",
+      "emptyDescription": "No timepieces match your selection. Try another name or reset the filters to explore the full catalog.",
+      "actionLabel": "View in catalog",
+      "selectedLabel": "Selected timepiece",
+      "selectionNote": "You are viewing this watch in the catalog. Full watch details are reserved for a later phase."
+    },
+    "collectionsPage": {
+      "eyebrow": "FOUR EXPRESSIONS OF TIME",
+      "title": "Find your expression.",
+      "description": "From quiet classics to designs with a sporting spirit, explore four distinct perspectives on the art of time.",
+      "image": "/images/watch-editorial.webp",
+      "imageAlt": "Reference photograph studying the details of a dark watch dial",
+      "ctaLabel": "Explore all timepieces",
+      "ctaUrl": "/shop/",
+      "collectionCta": "Shop this collection",
+      "countLabel": "timepieces in this edit",
+      "note": "Reference imagery and illustrative collections. Discover the full selection in our catalog."
     }
   },
   "styles": {
@@ -590,7 +677,57 @@
     "home.arrivals[0]": {},
     "home.arrivals[1]": {},
     "home.arrivals[2]": {},
-    "home.arrivals[3]": {}
+    "home.arrivals[3]": {},
+    "shop.eyebrow": {},
+    "shop.title": {},
+    "shop.description": {},
+    "shop.note": {},
+    "shop.searchLabel": {},
+    "shop.searchPlaceholder": {},
+    "shop.collectionLabel": {},
+    "shop.allCollectionsLabel": {},
+    "shop.priceLabel": {},
+    "shop.minimumPriceLabel": {},
+    "shop.maximumPriceLabel": {},
+    "shop.minimumPlaceholder": {},
+    "shop.maximumPlaceholder": {},
+    "shop.availabilityLabel": {},
+    "shop.allAvailabilityLabel": {},
+    "shop.availabilityOptions.available": {},
+    "shop.availabilityOptions.limited": {},
+    "shop.availabilityOptions.unavailable": {},
+    "shop.availabilityOptions.enquire": {},
+    "shop.sortLabel": {},
+    "shop.sortOptions.featured": {},
+    "shop.sortOptions.newest": {},
+    "shop.sortOptions.priceAsc": {},
+    "shop.sortOptions.priceDesc": {},
+    "shop.resetLabel": {},
+    "shop.resultsLabel": {},
+    "shop.filterSummary": {},
+    "shop.emptyTitle": {},
+    "shop.emptyDescription": {},
+    "shop.actionLabel": {},
+    "shop.selectedLabel": {},
+    "shop.selectionNote": {},
+    "collectionsPage.eyebrow": {},
+    "collectionsPage.title": {},
+    "collectionsPage.description": {},
+    "collectionsPage.image": {},
+    "collectionsPage.imageAlt": {},
+    "collectionsPage.ctaLabel": {},
+    "collectionsPage.ctaUrl": {},
+    "collectionsPage.collectionCta": {},
+    "collectionsPage.countLabel": {},
+    "collectionsPage.note": {},
+    "shop-intro.section": {},
+    "shop-catalog.section": {},
+    "shop.grid": {},
+    "collections-intro.section": {},
+    "collections-edit.section": {},
+    "common.routingLabel": {},
+    "common.routingNote": {},
+    "common.routingCta": {}
   },
   "theme": {
     "primaryColor": "#101A2B",

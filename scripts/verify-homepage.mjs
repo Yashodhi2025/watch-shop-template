@@ -1,62 +1,11 @@
-import { createServer } from 'node:http';
-import { readFile, mkdir, writeFile } from 'node:fs/promises';
-import { spawn } from 'node:child_process';
-import { resolve, join, extname } from 'node:path';
+import { readFile, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import assert from 'node:assert/strict';
-
-// Browser QA uses the installed Chrome and Node's native CDP/WebSocket support.
-const root = resolve('out');
-const reportDir = resolve('.deneb/qa');
-await mkdir(reportDir, { recursive: true });
-const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.webp': 'image/webp', '.woff2': 'font/woff2', '.svg': 'image/svg+xml', '.ico': 'image/x-icon' };
-const server = createServer(async (req, res) => {
-  try {
-    const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-    const file = resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
-    if (!file.startsWith(`${root}\\`) && !file.startsWith(`${root}/`)) throw new Error('Invalid path');
-    const bytes = await readFile(file);
-    res.writeHead(200, { 'Content-Type': mime[extname(file)] || 'application/octet-stream' });
-    res.end(bytes);
-  } catch { res.writeHead(404); res.end('Not found'); }
-});
-await new Promise(done => server.listen(0, '127.0.0.1', done));
-const url = `http://127.0.0.1:${server.address().port}`;
-const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check', '--remote-debugging-port=0', `--user-data-dir=${join(reportDir, `chrome-profile-${Date.now()}`)}`, 'about:blank'], { windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'] });
-let socket;
+import { openBrowserSession } from './browser-session.mjs';
+const browser = await openBrowserSession({ basePath: process.env.NEXT_PUBLIC_SITE_BASE_PATH || '' });
+const { url, reportDir, send, evaluate, pause, errors: runtimeErrors } = browser;
 const findings = [];
 try {
-  const endpoint = await new Promise((done, reject) => {
-    const timeout = setTimeout(() => reject(new Error('Chrome debugging timeout')), 20000);
-    chrome.on('error', reject);
-    chrome.stderr.on('data', chunk => {
-      const match = chunk.toString().match(/DevTools listening on (ws:\/\/[^\s]+)/);
-      if (match) { clearTimeout(timeout); done(match[1]); }
-    });
-  });
-  const port = new URL(endpoint).port;
-  const pages = await (await fetch(`http://127.0.0.1:${port}/json`)).json();
-  socket = new WebSocket(pages.find(page => page.type === 'page').webSocketDebuggerUrl);
-  await new Promise((done, reject) => { socket.onopen = done; socket.onerror = reject; });
-  let serial = 0;
-  const pending = new Map();
-  const runtimeErrors = [];
-  socket.onmessage = event => {
-    const message = JSON.parse(event.data);
-    if (message.method === 'Runtime.exceptionThrown') runtimeErrors.push(message.params.exceptionDetails.exception?.description || message.params.exceptionDetails.text);
-    if (message.id) {
-      const request = pending.get(message.id);
-      if (!request) return;
-      pending.delete(message.id);
-      message.error ? request.reject(Error(JSON.stringify(message.error))) : request.resolve(message.result);
-    }
-  };
-  const send = (method, params = {}) => new Promise((resolve, reject) => { const id = ++serial; pending.set(id, { resolve, reject }); socket.send(JSON.stringify({ id, method, params })); });
-  const evaluate = async expression => {
-    const result = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true, userGesture: true });
-    if (result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));
-    return result.result.value;
-  };
-  const pause = ms => new Promise(done => setTimeout(done, ms));
   const inspectReadability = () => evaluate(`(() => {
     const rgb = value => (value.match(/[\\d.]+/g) || []).map(Number);
     const luminance = channels => channels.slice(0,3).map(v => {
@@ -115,7 +64,8 @@ try {
   findings.push('Product fields remain visible without hover; product and Brand Story copy meet 4.5:1 contrast at all five widths.');
   await evaluate('document.querySelector(".mobile-toggle").click()');
   assert.equal(await evaluate('document.querySelector(".mobile-toggle").ariaExpanded'), 'true');
-  await evaluate('document.querySelector(".mobile-nav a:nth-child(3)").click()');
+  await evaluate('document.querySelector(".mobile-nav a:first-child").click()');
+  await pause(900);
   assert.equal(await evaluate('document.querySelector(".mobile-toggle").ariaExpanded'), 'false');
   await evaluate('document.querySelector(".collection-card a").click()');
   assert.equal(await evaluate('document.querySelectorAll("#featured .watch-grid > div:not([hidden])").length'), 1);
@@ -206,6 +156,5 @@ try {
   findings.push('No browser runtime exceptions.');
   await writeFile(join(reportDir, 'browser-results.json'), JSON.stringify({ url, passed: true, findings }, null, 2));
   console.log(findings.join('\n'));
-} finally {
-  socket?.close(); chrome.kill(); server.close();
-}
+
+} finally { browser.close(); }
