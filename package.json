@@ -9,11 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@deneb-ui/ui": "^2.0.131",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@deneb-ui/cli": "^2.0.131",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
