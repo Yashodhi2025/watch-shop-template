@@ -7,20 +7,30 @@
     "contractVersion": 1,
     "mode": "strict",
     "controlOnlyPaths": [
-      "__fivoraIntake.additionalBusinessDetails",
-      "__fivoraIntake.businessSummary",
-      "__fivoraIntake.outputLanguage",
-      "__fivoraIntake.referenceWebsiteUrl",
-      "__fivoraIntake.tone",
-      "common.business.email",
+      "common.logoUrl",
       "common.business.phone",
       "common.business.whatsapp",
-      "common.copyright",
-      "common.headerCtaLabel",
-      "common.logoUrl",
-      "common.navLabels.home",
-      "common.shortDescription",
-      "common.websiteTitle"
+      "common.business.email",
+      "home.heroImageAlt",
+      "home.products[*].imageAlt",
+      "home.collections[*].imageAlt",
+      "home.storyImageAlt",
+      "home.arrivals[*].imageAlt",
+      "__fivoraIntake.tone",
+      "__fivoraIntake.outputLanguage",
+      "__fivoraIntake.businessSummary",
+      "__fivoraIntake.additionalBusinessDetails",
+      "__fivoraIntake.referenceWebsiteUrl",
+      "common.closeLabel",
+      "common.menuLabel",
+      "common.searchPlaceholder",
+      "common.searchEmpty",
+      "common.enquiryPrefix",
+      "home.allLabel",
+      "home.collectionCta",
+      "home.emailPlaceholder",
+      "home.enquireLabel",
+      "home.newsletterSuccess"
     ]
   },
   "siteDataFile": "src/data/site-data.json",
@@ -31,9 +41,10 @@
   "pages": [
     {
       "id": "home",
-      "label": "Home",
+      "label": "AUREL — Luxury Watch Boutique",
       "route": "/",
-      "required": true
+      "required": true,
+      "description": "Luxury watch storefront homepage: curated watches, collections and brand story."
     }
   ],
   "editorSchema": {
@@ -42,14 +53,13 @@
       {
         "id": "common",
         "path": "common",
+        "label": "Brand, Navigation & Client Care",
         "type": "object",
-        "label": "Shared Website Content",
         "fields": [
           {
             "key": "websiteTitle",
             "type": "text",
-            "label": "Website Title",
-            "required": true
+            "label": "Website Title"
           },
           {
             "key": "shortDescription",
@@ -59,29 +69,49 @@
           {
             "key": "logoUrl",
             "type": "image",
-            "label": "Website Logo"
+            "label": "Logo Url"
           },
           {
             "key": "headerCtaLabel",
             "type": "text",
-            "label": "Header Button Label"
-          },
-          {
-            "key": "navLabels",
-            "type": "object",
-            "label": "Navigation Labels",
-            "fields": [
-              {
-                "key": "home",
-                "type": "text",
-                "label": "Home Link"
-              }
-            ]
+            "label": "Header Cta Label"
           },
           {
             "key": "copyright",
             "type": "text",
             "label": "Copyright"
+          },
+          {
+            "key": "navLabels",
+            "type": "object",
+            "label": "Nav Labels",
+            "fields": [
+              {
+                "key": "home",
+                "type": "text",
+                "label": "Home"
+              },
+              {
+                "key": "shop",
+                "type": "text",
+                "label": "Shop"
+              },
+              {
+                "key": "collections",
+                "type": "text",
+                "label": "Collections"
+              },
+              {
+                "key": "about",
+                "type": "text",
+                "label": "About"
+              },
+              {
+                "key": "contact",
+                "type": "text",
+                "label": "Contact"
+              }
+            ]
           },
           {
             "key": "business",
@@ -104,14 +134,206 @@
                 "label": "Email"
               }
             ]
+          },
+          {
+            "key": "wordmarkSubtitle",
+            "type": "text",
+            "label": "Wordmark Subtitle"
+          },
+          {
+            "key": "announcement",
+            "type": "text",
+            "label": "Announcement"
+          },
+          {
+            "key": "announcementDetail",
+            "type": "text",
+            "label": "Announcement Detail"
+          },
+          {
+            "key": "searchLabel",
+            "type": "text",
+            "label": "Search Label"
+          },
+          {
+            "key": "bagLabel",
+            "type": "text",
+            "label": "Bag Label"
+          },
+          {
+            "key": "menuLabel",
+            "type": "text",
+            "label": "Menu Label"
+          },
+          {
+            "key": "closeLabel",
+            "type": "text",
+            "label": "Close Label"
+          },
+          {
+            "key": "searchPlaceholder",
+            "type": "text",
+            "label": "Search Placeholder"
+          },
+          {
+            "key": "searchEmpty",
+            "type": "text",
+            "label": "Search Empty"
+          },
+          {
+            "key": "bagTitle",
+            "type": "text",
+            "label": "Bag Title"
+          },
+          {
+            "key": "bagDescription",
+            "type": "textarea",
+            "label": "Bag Description"
+          },
+          {
+            "key": "bagCta",
+            "type": "text",
+            "label": "Bag Cta"
+          },
+          {
+            "key": "enquiryPrefix",
+            "type": "text",
+            "label": "Enquiry Prefix"
+          },
+          {
+            "key": "enquiryNote",
+            "type": "textarea",
+            "label": "Enquiry Note"
+          },
+          {
+            "key": "footerShopLabel",
+            "type": "text",
+            "label": "Footer Shop Label"
+          },
+          {
+            "key": "footerSupportLabel",
+            "type": "text",
+            "label": "Footer Support Label"
+          },
+          {
+            "key": "footerSocialLabel",
+            "type": "text",
+            "label": "Footer Social Label"
+          },
+          {
+            "key": "footerNote",
+            "type": "textarea",
+            "label": "Footer Note"
+          },
+          {
+            "key": "footerLinks",
+            "type": "list",
+            "label": "Footer Links",
+            "itemLabel": "Footer Link",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label"
+              },
+              {
+                "key": "href",
+                "type": "url",
+                "label": "Href"
+              }
+            ]
+          },
+          {
+            "key": "supportLinks",
+            "type": "list",
+            "label": "Support Links",
+            "itemLabel": "Support Link",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label"
+              },
+              {
+                "key": "href",
+                "type": "url",
+                "label": "Href"
+              }
+            ]
+          },
+          {
+            "key": "socialLinks",
+            "type": "list",
+            "label": "Social Links",
+            "itemLabel": "Social Link",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label"
+              },
+              {
+                "key": "href",
+                "type": "url",
+                "label": "Href"
+              }
+            ]
+          },
+          {
+            "key": "socialNote",
+            "type": "textarea",
+            "label": "Social Note"
+          },
+          {
+            "key": "homeUrl",
+            "type": "url",
+            "label": "Home Url"
+          },
+          {
+            "key": "headerCtaUrl",
+            "type": "url",
+            "label": "Header Cta Url"
+          },
+          {
+            "key": "navUrls",
+            "type": "object",
+            "label": "Nav Urls",
+            "fields": [
+              {
+                "key": "home",
+                "type": "url",
+                "label": "Home"
+              },
+              {
+                "key": "shop",
+                "type": "url",
+                "label": "Shop"
+              },
+              {
+                "key": "collections",
+                "type": "url",
+                "label": "Collections"
+              },
+              {
+                "key": "about",
+                "type": "url",
+                "label": "About"
+              },
+              {
+                "key": "contact",
+                "type": "url",
+                "label": "Contact"
+              }
+            ]
           }
         ]
       },
       {
         "id": "home",
         "path": "home",
+        "label": "AUREL Homepage",
         "type": "object",
-        "label": "Home Content",
+        "pageKey": "home",
         "fields": [
           {
             "key": "nextJsLogoImage",
@@ -130,7 +352,7 @@
           },
           {
             "key": "templatesUrl",
-            "type": "text",
+            "type": "url",
             "label": "Templates Url"
           },
           {
@@ -140,7 +362,7 @@
           },
           {
             "key": "learningUrl",
-            "type": "text",
+            "type": "url",
             "label": "Learning Url"
           },
           {
@@ -150,7 +372,7 @@
           },
           {
             "key": "deployNowUrl",
-            "type": "text",
+            "type": "url",
             "label": "Deploy Now Url"
           },
           {
@@ -165,7 +387,7 @@
           },
           {
             "key": "documentationUrl",
-            "type": "text",
+            "type": "url",
             "label": "Documentation Url"
           },
           {
@@ -177,280 +399,433 @@
             "key": "pageTsx",
             "type": "text",
             "label": "Page Tsx"
+          },
+          {
+            "key": "heroImageAlt",
+            "type": "text",
+            "label": "Hero Image Alt"
+          },
+          {
+            "key": "heroCaption",
+            "type": "text",
+            "label": "Hero Caption"
+          },
+          {
+            "key": "heroEdition",
+            "type": "text",
+            "label": "Hero Edition"
+          },
+          {
+            "key": "benefits",
+            "type": "list",
+            "label": "Benefits",
+            "itemLabel": "Benefit",
+            "fields": [
+              {
+                "key": "icon",
+                "type": "text",
+                "label": "Icon"
+              },
+              {
+                "key": "title",
+                "type": "text",
+                "label": "Title"
+              },
+              {
+                "key": "text",
+                "type": "textarea",
+                "label": "Text"
+              }
+            ]
+          },
+          {
+            "key": "featuredEyebrow",
+            "type": "text",
+            "label": "Featured Eyebrow"
+          },
+          {
+            "key": "featuredTitle",
+            "type": "text",
+            "label": "Featured Title"
+          },
+          {
+            "key": "featuredDescription",
+            "type": "textarea",
+            "label": "Featured Description"
+          },
+          {
+            "key": "allLabel",
+            "type": "text",
+            "label": "All Label"
+          },
+          {
+            "key": "enquireLabel",
+            "type": "text",
+            "label": "Enquire Label"
+          },
+          {
+            "key": "products",
+            "type": "list",
+            "label": "Products",
+            "itemLabel": "Product",
+            "fields": [
+              {
+                "key": "name",
+                "type": "text",
+                "label": "Name"
+              },
+              {
+                "key": "collection",
+                "type": "text",
+                "label": "Collection"
+              },
+              {
+                "key": "price",
+                "type": "text",
+                "label": "Price"
+              },
+              {
+                "key": "image",
+                "type": "image",
+                "label": "Image"
+              },
+              {
+                "key": "imageAlt",
+                "type": "text",
+                "label": "Image Alt"
+              },
+              {
+                "key": "description",
+                "type": "textarea",
+                "label": "Description"
+              },
+              {
+                "key": "availability",
+                "type": "text",
+                "label": "Availability"
+              },
+              {
+                "key": "badge",
+                "type": "text",
+                "label": "Badge"
+              },
+              {
+                "key": "href",
+                "type": "url",
+                "label": "Href"
+              }
+            ]
+          },
+          {
+            "key": "collectionsEyebrow",
+            "type": "text",
+            "label": "Collections Eyebrow"
+          },
+          {
+            "key": "collectionsTitle",
+            "type": "text",
+            "label": "Collections Title"
+          },
+          {
+            "key": "collectionCta",
+            "type": "text",
+            "label": "Collection Cta"
+          },
+          {
+            "key": "collections",
+            "type": "list",
+            "label": "Collections",
+            "itemLabel": "Collection",
+            "fields": [
+              {
+                "key": "name",
+                "type": "text",
+                "label": "Name"
+              },
+              {
+                "key": "description",
+                "type": "textarea",
+                "label": "Description"
+              },
+              {
+                "key": "image",
+                "type": "image",
+                "label": "Image"
+              },
+              {
+                "key": "imageAlt",
+                "type": "text",
+                "label": "Image Alt"
+              },
+              {
+                "key": "href",
+                "type": "url",
+                "label": "Href"
+              }
+            ]
+          },
+          {
+            "key": "storyEyebrow",
+            "type": "text",
+            "label": "Story Eyebrow"
+          },
+          {
+            "key": "storyTitle",
+            "type": "text",
+            "label": "Story Title"
+          },
+          {
+            "key": "storyDescription",
+            "type": "textarea",
+            "label": "Story Description"
+          },
+          {
+            "key": "storyDetail",
+            "type": "text",
+            "label": "Story Detail"
+          },
+          {
+            "key": "storyLabel",
+            "type": "text",
+            "label": "Story Label"
+          },
+          {
+            "key": "storyUrl",
+            "type": "url",
+            "label": "Story Url"
+          },
+          {
+            "key": "storyImageAlt",
+            "type": "text",
+            "label": "Story Image Alt"
+          },
+          {
+            "key": "storyCaption",
+            "type": "text",
+            "label": "Story Caption"
+          },
+          {
+            "key": "arrivalsEyebrow",
+            "type": "text",
+            "label": "Arrivals Eyebrow"
+          },
+          {
+            "key": "arrivalsTitle",
+            "type": "text",
+            "label": "Arrivals Title"
+          },
+          {
+            "key": "arrivalsDescription",
+            "type": "textarea",
+            "label": "Arrivals Description"
+          },
+          {
+            "key": "arrivals",
+            "type": "list",
+            "label": "Arrivals",
+            "itemLabel": "Arrival",
+            "fields": [
+              {
+                "key": "name",
+                "type": "text",
+                "label": "Name"
+              },
+              {
+                "key": "collection",
+                "type": "text",
+                "label": "Collection"
+              },
+              {
+                "key": "price",
+                "type": "text",
+                "label": "Price"
+              },
+              {
+                "key": "image",
+                "type": "image",
+                "label": "Image"
+              },
+              {
+                "key": "imageAlt",
+                "type": "text",
+                "label": "Image Alt"
+              },
+              {
+                "key": "description",
+                "type": "textarea",
+                "label": "Description"
+              },
+              {
+                "key": "availability",
+                "type": "text",
+                "label": "Availability"
+              },
+              {
+                "key": "badge",
+                "type": "text",
+                "label": "Badge"
+              },
+              {
+                "key": "href",
+                "type": "url",
+                "label": "Href"
+              }
+            ]
+          },
+          {
+            "key": "reviewsEyebrow",
+            "type": "text",
+            "label": "Reviews Eyebrow"
+          },
+          {
+            "key": "reviewsTitle",
+            "type": "text",
+            "label": "Reviews Title"
+          },
+          {
+            "key": "reviewsNote",
+            "type": "textarea",
+            "label": "Reviews Note"
+          },
+          {
+            "key": "reviews",
+            "type": "list",
+            "label": "Reviews",
+            "itemLabel": "Review",
+            "fields": [
+              {
+                "key": "rating",
+                "type": "text",
+                "label": "Rating"
+              },
+              {
+                "key": "quote",
+                "type": "textarea",
+                "label": "Quote"
+              },
+              {
+                "key": "name",
+                "type": "text",
+                "label": "Name"
+              },
+              {
+                "key": "detail",
+                "type": "text",
+                "label": "Detail"
+              }
+            ]
+          },
+          {
+            "key": "newsletterEyebrow",
+            "type": "text",
+            "label": "Newsletter Eyebrow"
+          },
+          {
+            "key": "newsletterTitle",
+            "type": "text",
+            "label": "Newsletter Title"
+          },
+          {
+            "key": "newsletterDescription",
+            "type": "textarea",
+            "label": "Newsletter Description"
+          },
+          {
+            "key": "emailLabel",
+            "type": "text",
+            "label": "Email Label"
+          },
+          {
+            "key": "emailPlaceholder",
+            "type": "text",
+            "label": "Email Placeholder"
+          },
+          {
+            "key": "newsletterButton",
+            "type": "text",
+            "label": "Newsletter Button"
+          },
+          {
+            "key": "newsletterDemo",
+            "type": "textarea",
+            "label": "Newsletter Demo"
+          },
+          {
+            "key": "newsletterSuccess",
+            "type": "textarea",
+            "label": "Newsletter Success"
           }
-        ],
-        "pageKey": "home"
+        ]
       },
       {
         "id": "__fivoraIntake",
         "path": "__fivoraIntake",
-        "type": "object",
         "label": "AI Intake (Platform Managed)",
+        "type": "object",
         "fields": [
           {
             "key": "tone",
             "type": "text",
-            "label": "Brand tone"
+            "label": "Tone"
           },
           {
             "key": "outputLanguage",
             "type": "text",
-            "label": "Output language"
+            "label": "Output Language"
           },
           {
             "key": "businessSummary",
-            "type": "textarea",
-            "label": "Business summary"
+            "type": "text",
+            "label": "Business Summary"
           },
           {
             "key": "additionalBusinessDetails",
-            "type": "textarea",
-            "label": "Additional business details"
+            "type": "text",
+            "label": "Additional Business Details"
           },
           {
             "key": "referenceWebsiteUrl",
             "type": "url",
-            "label": "Reference website URL"
+            "label": "Reference Website Url"
           },
           {
             "key": "guidanceNotes",
             "type": "object",
-            "label": "AI Guidance Notes",
+            "label": "Guidance Notes",
             "fields": []
-          }
-        ]
-      },
-      {
-        "id": "cards.vehicles",
-        "path": "cards.vehicles",
-        "type": "collection",
-        "label": "Vehicle Card Text",
-        "description": "Edit the displayed text for each vehicle listing card",
-        "collectionType": "keyed",
-        "items": []
-      },
-      {
-        "id": "cards.brands",
-        "path": "cards.brands",
-        "type": "collection",
-        "label": "Brand Cards",
-        "description": "Override brand display names and count labels on the brand browse grid",
-        "collectionType": "keyed",
-        "items": []
-      },
-      {
-        "id": "cards.bodyTypes",
-        "path": "cards.bodyTypes",
-        "type": "collection",
-        "label": "Body Type Cards",
-        "description": "Override body type names and descriptions on the browse-by-body-type grid",
-        "collectionType": "keyed",
-        "items": [
-          {
-            "key": "hatchback",
-            "label": "Hatchback",
-            "fields": [
-              {
-                "key": "displayName",
-                "type": "text",
-                "label": "Display Name"
-              },
-              {
-                "key": "description",
-                "type": "text",
-                "label": "Short Description"
-              }
-            ]
-          },
-          {
-            "key": "sedan",
-            "label": "Sedan",
-            "fields": [
-              {
-                "key": "displayName",
-                "type": "text",
-                "label": "Display Name"
-              },
-              {
-                "key": "description",
-                "type": "text",
-                "label": "Short Description"
-              }
-            ]
-          },
-          {
-            "key": "suv",
-            "label": "SUV",
-            "fields": [
-              {
-                "key": "displayName",
-                "type": "text",
-                "label": "Display Name"
-              },
-              {
-                "key": "description",
-                "type": "text",
-                "label": "Short Description"
-              }
-            ]
-          },
-          {
-            "key": "crossover",
-            "label": "Crossover",
-            "fields": [
-              {
-                "key": "displayName",
-                "type": "text",
-                "label": "Display Name"
-              },
-              {
-                "key": "description",
-                "type": "text",
-                "label": "Short Description"
-              }
-            ]
-          },
-          {
-            "key": "pickup",
-            "label": "Pickup",
-            "fields": [
-              {
-                "key": "displayName",
-                "type": "text",
-                "label": "Display Name"
-              },
-              {
-                "key": "description",
-                "type": "text",
-                "label": "Short Description"
-              }
-            ]
-          },
-          {
-            "key": "van",
-            "label": "Van",
-            "fields": [
-              {
-                "key": "displayName",
-                "type": "text",
-                "label": "Display Name"
-              },
-              {
-                "key": "description",
-                "type": "text",
-                "label": "Short Description"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "photos.vehicles",
-        "path": "photos.vehicles",
-        "type": "collection",
-        "label": "Vehicle Photos",
-        "description": "Replace photos for each vehicle listing",
-        "collectionType": "keyed",
-        "items": []
-      },
-      {
-        "id": "home.benefits",
-        "path": "home.benefits",
-        "type": "collection",
-        "label": "Home Benefits & Features",
-        "description": "Edit icons, titles, and explanations for Why Buy With Us benefit cards",
-        "collectionType": "list",
-        "items": [
-          {
-            "key": "0",
-            "label": "Evidence you can see",
-            "fields": [
-              {
-                "key": "icon",
-                "type": "text",
-                "label": "Icon",
-                "control": "icon-picker"
-              },
-              {
-                "key": "title",
-                "type": "text",
-                "label": "Title"
-              },
-              {
-                "key": "text",
-                "type": "textarea",
-                "label": "Description"
-              }
-            ]
-          },
-          {
-            "key": "1",
-            "label": "WhatsApp-first service",
-            "fields": [
-              {
-                "key": "icon",
-                "type": "text",
-                "label": "Icon",
-                "control": "icon-picker"
-              },
-              {
-                "key": "title",
-                "type": "text",
-                "label": "Title"
-              },
-              {
-                "key": "text",
-                "type": "textarea",
-                "label": "Description"
-              }
-            ]
-          },
-          {
-            "key": "2",
-            "label": "Clear numbers upfront",
-            "fields": [
-              {
-                "key": "icon",
-                "type": "text",
-                "label": "Icon",
-                "control": "icon-picker"
-              },
-              {
-                "key": "title",
-                "type": "text",
-                "label": "Title"
-              },
-              {
-                "key": "text",
-                "type": "textarea",
-                "label": "Description"
-              }
-            ]
-          },
-          {
-            "key": "3",
-            "label": "Sourcing on request",
-            "fields": [
-              {
-                "key": "icon",
-                "type": "text",
-                "label": "Icon",
-                "control": "icon-picker"
-              },
-              {
-                "key": "title",
-                "type": "text",
-                "label": "Title"
-              },
-              {
-                "key": "text",
-                "type": "textarea",
-                "label": "Description"
-              }
-            ]
           }
         ]
       }
     ]
-  }
+  },
+  "colorPalette": [
+    {
+      "color": "#101A2B",
+      "usageCount": 1
+    },
+    {
+      "color": "#333A44",
+      "usageCount": 1
+    },
+    {
+      "color": "#C4A46A",
+      "usageCount": 1
+    },
+    {
+      "color": "#F6F3ED",
+      "usageCount": 1
+    },
+    {
+      "color": "#EFEBE3",
+      "usageCount": 1
+    },
+    {
+      "color": "#101A2B",
+      "usageCount": 1
+    },
+    {
+      "color": "#DED9CE",
+      "usageCount": 1
+    }
+  ]
 }

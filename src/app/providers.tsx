@@ -1,18 +1,21 @@
 "use client";
 
 import { SiteDataProvider, ThemeStyles, ThemeToggle } from "@deneb-ui/ui";
-import type { ReactNode } from "react";
+import type { SiteData } from "@deneb-ui/ui";
+import type { ComponentProps, ReactNode } from "react";
 import initialSiteData from "@/data/site-data.json";
 
 // Keep Deneb's CommonJS exports behind an explicit client boundary.
 export default function Providers({ children }: { children: ReactNode }) {
+  const data: SiteData = initialSiteData;
+  const theme = (data.template?.structure?.theme || data.theme) as ComponentProps<typeof ThemeStyles>["theme"];
   return (
     <>
-      <ThemeStyles theme={initialSiteData.template.structure.theme} enableDualMode />
+      <ThemeStyles theme={theme} enableDualMode />
       <SiteDataProvider initialSiteData={initialSiteData}>
         {children}
       </SiteDataProvider>
-      <ThemeToggle showLabel className="fixed bottom-6 left-6 z-40" />
+      <ThemeToggle className="theme-switcher" />
     </>
   );
 }
