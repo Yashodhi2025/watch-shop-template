@@ -19,7 +19,8 @@
         "home",
         "shop",
         "collections",
-        "product_link"
+        "product_link",
+        "cart"
       ],
       "theme": {
         "primaryColor": "#101A2B",
@@ -49,7 +50,8 @@
       "home",
       "shop",
       "collections",
-      "product_link"
+      "product_link",
+      "cart"
     ],
     "requiredFeatures": []
   },
@@ -825,6 +827,22 @@
       "missingTitle": "A moment to rediscover.",
       "missingDescription": "This timepiece could not be found. Explore our current selection or search for another watch.",
       "discoverUrl": "#watch-story"
+    },
+    "cart": {
+      "eyebrow": "YOUR AUREL SELECTION",
+      "title": "Your shopping bag.",
+      "emptyTitle": "Your next chapter awaits.",
+      "emptyDescription": "Discover a timepiece to make your own.",
+      "summaryTitle": "Your selection",
+      "itemsLabel": "Items",
+      "subtotalLabel": "Subtotal",
+      "note": "USD reference prices. Delivery and taxes are not calculated. Watches with unconfirmed prices cannot be added.",
+      "checkoutNote": "Checkout is unavailable in this demo. No orders or payments are accepted.",
+      "continueLabel": "Continue shopping",
+      "continueUrl": "/shop/",
+      "removeLabel": "Remove",
+      "addLabel": "Add to Bag",
+      "addedLabel": "Added to your bag."
     }
   },
   "styles": {

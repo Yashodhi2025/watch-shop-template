@@ -84,9 +84,9 @@ try {
   assert.match(await evaluate('document.querySelector(".detail-title").textContent'), /Navigator Steel/);
   await browser.navigate('/');
   await evaluate('document.querySelector(".bag-button").click()');
-  assert.equal(await evaluate('document.querySelector(".bag-dialog").open'), true);
-  await evaluate('document.querySelector(".bag-dialog .button").click()');
-  assert.equal(await evaluate('document.querySelector(".bag-dialog").open'), false);
+  await pause(1200);
+  assert.ok(await evaluate('location.pathname.endsWith("/cart/")'));
+  await browser.navigate('/');
   findings.push('Mobile navigation, collection filtering, search-to-details navigation and bag notice work.');
   assert.equal(await evaluate(`(() => { const input = document.querySelector('#newsletter-email'); input.value='invalid'; return input.checkValidity(); })()`), false);
   await evaluate(`(() => { const input = document.querySelector('#newsletter-email'); input.value='client@example.com'; document.querySelector('.newsletter-form').requestSubmit(); })()`);

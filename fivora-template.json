@@ -83,7 +83,21 @@
       "productDetails.relatedTitle",
       "productDetails.backLabel",
       "productDetails.backUrl",
-      "productDetails.discoverUrl"
+      "productDetails.discoverUrl",
+      "cart.eyebrow",
+      "cart.title",
+      "cart.emptyTitle",
+      "cart.emptyDescription",
+      "cart.summaryTitle",
+      "cart.itemsLabel",
+      "cart.subtotalLabel",
+      "cart.note",
+      "cart.checkoutNote",
+      "cart.continueLabel",
+      "cart.continueUrl",
+      "cart.removeLabel",
+      "cart.addLabel",
+      "cart.addedLabel"
     ]
   },
   "siteDataFile": "src/data/site-data.json",
@@ -119,6 +133,12 @@
       "route": "/products/detail",
       "required": true,
       "description": "Luxury timepiece details, editable gallery and specifications, concierge enquiry, and related watches. Stable client-side ID routing."
+    },
+    {
+      "id": "cart",
+      "label": "Shopping Cart",
+      "route": "/cart",
+      "required": true
     }
   ],
   "editorSchema": {
@@ -1440,6 +1460,85 @@
             "key": "discoverUrl",
             "type": "url",
             "label": "Discover details destination"
+          }
+        ]
+      },
+      {
+        "id": "cart",
+        "path": "cart",
+        "pageKey": "cart",
+        "type": "object",
+        "label": "Shopping Cart",
+        "fields": [
+          {
+            "key": "eyebrow",
+            "type": "text",
+            "label": "eyebrow"
+          },
+          {
+            "key": "title",
+            "type": "text",
+            "label": "title"
+          },
+          {
+            "key": "emptyTitle",
+            "type": "text",
+            "label": "emptyTitle"
+          },
+          {
+            "key": "emptyDescription",
+            "type": "text",
+            "label": "emptyDescription"
+          },
+          {
+            "key": "summaryTitle",
+            "type": "text",
+            "label": "summaryTitle"
+          },
+          {
+            "key": "itemsLabel",
+            "type": "text",
+            "label": "itemsLabel"
+          },
+          {
+            "key": "subtotalLabel",
+            "type": "text",
+            "label": "subtotalLabel"
+          },
+          {
+            "key": "note",
+            "type": "text",
+            "label": "note"
+          },
+          {
+            "key": "checkoutNote",
+            "type": "text",
+            "label": "checkoutNote"
+          },
+          {
+            "key": "continueLabel",
+            "type": "text",
+            "label": "continueLabel"
+          },
+          {
+            "key": "continueUrl",
+            "type": "url",
+            "label": "continueUrl"
+          },
+          {
+            "key": "removeLabel",
+            "type": "text",
+            "label": "removeLabel"
+          },
+          {
+            "key": "addLabel",
+            "type": "text",
+            "label": "addLabel"
+          },
+          {
+            "key": "addedLabel",
+            "type": "text",
+            "label": "addedLabel"
           }
         ]
       }

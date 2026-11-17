@@ -32,7 +32,7 @@ export function Text({ path: suppliedPath, "data-preview-field-path": fieldPath,
 const anchors = new Set(["#top", "#featured", "#collections", "#story", "#arrivals", "#reviews", "#newsletter", "#contact", "#watch-story"]);
 export function safeHref(raw: string, fallback = "#contact") {
   if (anchors.has(raw)) return raw;
-  if (/^\/(?:shop\/?|collections\/?|products\/detail\/?)?(?:[?#].*)?$/.test(raw)) return withBasePath(raw);
+  if (/^\/(?:cart\/?|shop\/?|collections\/?|products\/detail\/?)?(?:[?#].*)?$/.test(raw)) return withBasePath(raw);
   if (/^https?:\/\//i.test(raw)) return raw;
   if (/^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(raw)) return raw;
   return fallback;

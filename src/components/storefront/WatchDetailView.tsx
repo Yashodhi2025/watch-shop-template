@@ -4,6 +4,7 @@ import { EditableSection, useComponentStyle } from "@deneb-ui/ui";
 import { useRef, useState, type ReactNode } from "react";
 import { catalogProductHref, type CatalogEntry } from "./catalog";
 import { ArrivalWatch, FeaturedWatch } from "./WatchBindings";
+import { useBag } from "./bag";
 import { Arrow, EditLink, Photo, Text, safeHref, useContent } from "./editable";
 
 export type DetailBindings = {
@@ -14,6 +15,8 @@ export type DetailBindings = {
 
 export default function WatchDetailView({ entry, entries, fields, "data-preview-item-path": itemPath }: { entry: CatalogEntry; entries: CatalogEntry[]; fields: DetailBindings; "data-preview-item-path": string }) {
   const { text, list } = useContent();
+  const bag = useBag();
+  const [added,setAdded] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   const zoom = useRef<HTMLDialogElement>(null);
   const enquiry = useRef<HTMLDialogElement>(null);
@@ -63,6 +66,8 @@ export default function WatchDetailView({ entry, entries, fields, "data-preview-
             <div className="detail-price-row">{fields.price}<span className={`detail-stock detail-stock-${entry.availability}`}><i />{fields.availability}</span></div>
             <Text data-preview-field-path="productDetails.priceNote" as="p" className="detail-price-note" />
             <button className="button button-navy edit-link detail-enquire" type="button" style={enquiryStyles} data-preview-style-target="productDetails.enquireLabel" data-preview-style-type="button" onClick={() => enquiry.current?.showModal()}><Text data-preview-field-path="productDetails.enquireLabel" /><Arrow /></button>
+            <button type="button" className="button button-gold detail-enquire bag-add" disabled={entry.price===null || entry.availability==="unavailable"} onClick={()=>{bag.add(entry.id);setAdded(true);}}><Text data-preview-field-path="cart.addLabel"/></button>
+            {added && <p role="status" className="bag-added-status"><Text data-preview-field-path="cart.addedLabel"/></p>}
             <Text data-preview-field-path="productDetails.enquiryNote" as="p" className="detail-enquiry-note" />
             <div className="detail-service"><svg width="24" height="26" viewBox="0 0 24 26" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true"><path d="m12 2 9 4v7c0 6-9 10-9 10S3 19 3 13V6l9-4Z" /><path d="m8 12 3 3 5-6" /></svg><div><Text data-preview-field-path="productDetails.serviceTitle" as="h2" /><Text data-preview-field-path="productDetails.serviceDescription" as="p" /></div></div>
             <a href={safeHref(text("productDetails.discoverUrl"), "#watch-story")} data-preview-field-path="productDetails.discoverUrl" className="text-link detail-discover"><Text data-preview-field-path="productDetails.discoverLabel" /><span aria-hidden="true">↓</span></a>

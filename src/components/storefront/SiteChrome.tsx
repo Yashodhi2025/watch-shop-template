@@ -1,4 +1,5 @@
 "use client";
+import { useBag } from "./bag";
 import { EditableIcon } from "@deneb-ui/ui";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Arrow, EditLink, Photo, Text, safeHref, useContent } from "./editable";
@@ -17,7 +18,7 @@ function Brand() {
 }
 
 
-export default function SiteChrome({ page, selectedWatch = "", onEnquire, children }: { page: "home" | "shop" | "collections" | "product_link"; selectedWatch?: string; onEnquire?: (name: string) => void; children: ReactNode }) {
+export default function SiteChrome({ page, selectedWatch = "", onEnquire, children }: { page: "home" | "shop" | "collections" | "product_link" | "cart"; selectedWatch?: string; onEnquire?: (name: string) => void; children: ReactNode }) {
   const { text, list } = useContent();
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -25,6 +26,8 @@ export default function SiteChrome({ page, selectedWatch = "", onEnquire, childr
   const bagDialog = useRef<HTMLDialogElement>(null);
   const searchInput = useRef<HTMLInputElement>(null);
   const allProducts = useCatalog();
+  const bag = useBag();
+  const bagCount = allProducts.reduce((n,p)=>n+(bag.quantities[p.id]||0),0);
   const results = allProducts.filter(entry => (entry.name + " " + entry.collection).toLowerCase().includes(query.toLowerCase().trim()));
   useEffect(() => {
     const closeMenu = (event: KeyboardEvent) => { if (event.key === "Escape") setMenuOpen(false); };
@@ -34,7 +37,7 @@ export default function SiteChrome({ page, selectedWatch = "", onEnquire, childr
   const enquire = (name: string) => { onEnquire?.(name); searchDialog.current?.close(); setMenuOpen(false); };
   const closeOnBackdrop = (event: React.MouseEvent<HTMLDialogElement>) => { if (event.target === event.currentTarget) event.currentTarget.close(); };
   return <div id="top" className="storefront" data-preview-page-key={page}>
-    <a className="skip-link" href={page === "home" ? "#featured" : page === "shop" ? "#catalog" : page === "product_link" ? "#watch-details" : "#collection-edit"} data-preview-static="accessibility">Skip to content</a>
+    <a className="skip-link" href={page === "cart" ? "#cart" : page === "home" ? "#featured" : page === "shop" ? "#catalog" : page === "product_link" ? "#watch-details" : "#collection-edit"} data-preview-static="accessibility">Skip to content</a>
     <div className="announcement" data-design-section="announcement"><span className="announcement-spacer" /><Text data-preview-field-path="common.announcement" fallback="Discover the AUREL collection" /><span className="announcement-detail"><Text data-preview-field-path="common.announcementDetail" /></span></div>
     <header className="site-header" data-design-section="navigation">
       <div className="header-inner shell">
@@ -42,7 +45,7 @@ export default function SiteChrome({ page, selectedWatch = "", onEnquire, childr
         <nav className="desktop-nav">{nav.map(([key, href]) => <a key={key} href={safeHref(text(`common.navUrls.${key}`), href)} data-preview-field-path={"common.navUrls." + key} onClick={() => setMenuOpen(false)} className={key === page ? "nav-current" : ""}><Text path={`common.navLabels.${key}`} fallback={key} /></a>)}</nav>
         <div className="header-actions">
           <button type="button" className="icon-button" data-preview-field-path="common.searchLabel" aria-label={text("common.searchLabel", "Search timepieces")} onClick={() => { searchDialog.current?.showModal(); searchInput.current?.focus(); }}><EditableIcon name="search" size={21} strokeWidth={1.4} /></button>
-          <button type="button" className="icon-button bag-button" data-preview-field-path="common.bagLabel" aria-label={text("common.bagLabel", "Shopping bag")} onClick={() => bagDialog.current?.showModal()}><svg width="21" height="24" viewBox="0 0 24 26" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="M4 8h16l1 15H3L4 8Z" /><path d="M8 9V6a4 4 0 0 1 8 0v3" /></svg><span className="bag-count" data-preview-static="bag-count">0</span></button>
+          <button type="button" className="icon-button bag-button" data-preview-field-path="common.bagLabel" aria-label={text("common.bagLabel", "Shopping bag")} onClick={() => { window.location.href = safeHref("/cart/", "/cart/"); }}><svg width="21" height="24" viewBox="0 0 24 26" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="M4 8h16l1 15H3L4 8Z" /><path d="M8 9V6a4 4 0 0 1 8 0v3" /></svg><span className="bag-count" data-preview-static="bag-count">{bagCount}</span></button>
           <button type="button" className="icon-button mobile-toggle" data-preview-field-path="common.menuLabel" aria-label={text("common.menuLabel", "Toggle navigation")} aria-expanded={menuOpen} aria-controls={menuOpen ? "mobile-navigation" : undefined} onClick={() => setMenuOpen(!menuOpen)}><svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d={menuOpen ? "m6 6 12 12M6 18 18 6" : "M3 7h18M3 12h18M3 17h18"} /></svg></button>
         </div>
       </div>
