@@ -53,7 +53,8 @@ export async function openBrowserSession({ basePath = '' } = {}) {
       const entry = pending.get(message.id);
       if (!entry) return;
       pending.delete(message.id);
-      message.error ? entry.reject(Error(JSON.stringify(message.error))) : entry.resolve(message.result);
+      if (message.error) entry.reject(Error(JSON.stringify(message.error)));
+      else entry.resolve(message.result);
     };
     const send = (method, params = {}) => new Promise((resolve, reject) => { const id = ++serial; pending.set(id, { resolve, reject }); socket.send(JSON.stringify({ id, method, params })); });
     const evaluate = async expression => {

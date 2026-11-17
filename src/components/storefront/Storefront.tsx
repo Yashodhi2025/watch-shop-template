@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Arrow, EditLink, Photo, Text, safeHref, useContent } from "./editable";
 import { ArrivalWatch, FeaturedWatch } from "./WatchBindings";
 import SiteChrome from "./SiteChrome";
+import { useCatalog } from "./catalog";
 function BenefitGlyph({ children }: { children: React.ReactNode }) {
   return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>;
 }
@@ -22,6 +23,7 @@ export default function Storefront() {
   const emailInput = useRef<HTMLInputElement>(null);
   const products = list("home.products");
   const arrivals = list("home.arrivals");
+  const catalog = useCatalog();
   const enquire = (name: string) => setSelectedWatch(name);
   return <SiteChrome page="home" selectedWatch={selectedWatch} onEnquire={enquire}>
     <main>
@@ -45,7 +47,7 @@ export default function Storefront() {
       <EditableSection name="featured" padding="none" className="section-pad" aria-labelledby="featured-title">
         <div className="shell"><div className="section-heading"><div><Text data-preview-field-path="home.featuredEyebrow" className="eyebrow" /><Text data-preview-field-path="home.featuredTitle" as="h2" id="featured-title" className="section-title" /><Text data-preview-field-path="home.featuredDescription" as="p" className="section-description" /></div><EditLink hrefPath="home.documentationUrl" labelPath="home.documentationLabel" className="text-link" arrow onClick={() => setActiveCollection("")} /></div>
           {activeCollection && <div className="filter-status"><span>{activeCollection}</span><button type="button" className="text-link" onClick={() => setActiveCollection("")}><Text data-preview-field-path="home.allLabel" /><span aria-hidden="true">&times;</span></button></div>}
-          <div className="watch-grid" data-preview-list-path="home.products">{products.map((watch, index) => <div key={index} hidden={!!activeCollection && watch.collection !== activeCollection} data-preview-item-path={`home.products[${index}]`}><FeaturedWatch index={index} onEnquire={enquire} /></div>)}</div>
+          <div className="watch-grid" data-preview-list-path="home.products">{products.map((watch, index) => <div key={index} hidden={!!activeCollection && watch.collection !== activeCollection} data-preview-item-path={`home.products[${index}]`}><FeaturedWatch index={index} catalogId={catalog.find(entry => entry.source === "products" && entry.index === index)?.id} /></div>)}</div>
         </div>
       </EditableSection>
 
@@ -68,7 +70,7 @@ export default function Storefront() {
 
       <EditableSection name="arrivals" padding="none" className="section-pad" aria-labelledby="arrivals-title">
         <div className="shell"><div className="section-heading"><div><Text data-preview-field-path="home.arrivalsEyebrow" className="eyebrow" /><Text data-preview-field-path="home.arrivalsTitle" as="h2" id="arrivals-title" className="section-title" /><Text data-preview-field-path="home.arrivalsDescription" as="p" className="section-description" /></div><EditLink hrefPath="home.deployNowUrl" labelPath="home.deployNowLabel" fallbackHref="#arrivals" className="text-link" arrow /></div>
-          <div className="watch-grid" data-preview-list-path="home.arrivals">{arrivals.map((_, index) => <div key={index} data-preview-item-path={`home.arrivals[${index}]`}><ArrivalWatch index={index} onEnquire={enquire} /></div>)}</div>
+          <div className="watch-grid" data-preview-list-path="home.arrivals">{arrivals.map((_, index) => <div key={index} data-preview-item-path={`home.arrivals[${index}]`}><ArrivalWatch index={index} catalogId={catalog.find(entry => entry.source === "arrivals" && entry.index === index)?.id} /></div>)}</div>
         </div>
       </EditableSection>
 

@@ -10,8 +10,8 @@ type Fields = Record<"image" | "badge" | "collection" | "name" | "description" |
 export default function WatchCard({ path, "data-preview-field-path": hrefPath, fields, onEnquire, catalogId, selected = false }: { path: string; "data-preview-field-path": string; fields: Fields; onEnquire?: (name: string) => void; catalogId?: string; selected?: boolean }) {
   const { text } = useContent();
   const { cssVars } = useComponentStyle(path, "card", { paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, borderRadius: 0 });
-  const destination = catalogId ? catalogProductHref(catalogId) : safeHref(text(hrefPath));
-  const actionPath = catalogId ? `${path}.id` : hrefPath;
+  const destination = safeHref(text(hrefPath), catalogId ? catalogProductHref(catalogId) : "#contact");
+  const actionPath = hrefPath;
   const select = () => onEnquire?.(text(`${path}.name`, "Selected timepiece"));
   return <article id={catalogId ? `watch-${catalogId}` : undefined} tabIndex={catalogId ? -1 : undefined} className={`deneb-card watch-card${selected ? " is-selected" : ""}`} style={cssVars} data-preview-style-target={path} data-preview-style-type="card">
     <a href={destination} className="watch-image-link" data-preview-field-path={actionPath} onClick={select}>

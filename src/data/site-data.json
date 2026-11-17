@@ -142,8 +142,8 @@
         "about": "/#story",
         "contact": "/#contact"
       },
-      "routingLabel": "Opening the catalog…",
-      "routingNote": "Full watch details are reserved for a later phase.",
+      "routingLabel": "Discover the timepiece",
+      "routingNote": "Explore the details and speak to our concierge.",
       "routingCta": "Continue to Shop"
     },
     "home": {
@@ -195,10 +195,54 @@
           "description": "A refined expression of everyday elegance.",
           "availability": "Available",
           "badge": "SIGNATURE",
-          "href": "#contact",
+          "href": "/products/detail/?id=heritage-automatic",
           "id": "heritage-automatic",
           "addedAt": "2026-10-01",
-          "featuredOrder": 0
+          "featuredOrder": 0,
+          "reference": "HA-038-01",
+          "details": "Quietly assured, the Heritage Automatic brings a measured elegance to the everyday. Its clean proportions and softly finished case frame a dial designed to be read at a glance. A supple leather strap lends warmth to the composition, moving comfortably from a morning appointment to an unhurried evening.",
+          "gallery": [
+            {
+              "image": "/images/watch-classic.webp",
+              "imageAlt": "Heritage Automatic - dial and case detail",
+              "caption": "A closer look"
+            },
+            {
+              "image": "/images/watch-classic.webp",
+              "imageAlt": "Heritage Automatic - full composition",
+              "caption": "The complete composition"
+            }
+          ],
+          "specifications": [
+            {
+              "label": "Reference",
+              "value": "HA-038-01"
+            },
+            {
+              "label": "Movement",
+              "value": "Self-winding mechanical"
+            },
+            {
+              "label": "Case diameter",
+              "value": "38 mm"
+            },
+            {
+              "label": "Case material",
+              "value": "Polished stainless steel"
+            },
+            {
+              "label": "Strap / bracelet",
+              "value": "Leather strap"
+            },
+            {
+              "label": "Water resistance",
+              "value": "50 metres"
+            },
+            {
+              "label": "Power reserve",
+              "value": "48 hours"
+            }
+          ]
         },
         {
           "name": "Navigator Steel",
@@ -209,10 +253,54 @@
           "description": "Purposeful engineering with a distinctive steel finish.",
           "availability": "Available",
           "badge": "",
-          "href": "#contact",
+          "href": "/products/detail/?id=navigator-steel",
           "id": "navigator-steel",
           "addedAt": "2026-10-02",
-          "featuredOrder": 1
+          "featuredOrder": 1,
+          "reference": "NS-041-02",
+          "details": "A companion for changing horizons. The Navigator Steel pairs a purposeful silhouette with a beautifully balanced dial and the reassuring feel of a steel bracelet. Brushed surfaces catch the light with restraint, lending this versatile timepiece a character as comfortable in the city as it is beyond it.",
+          "gallery": [
+            {
+              "image": "/images/watch-sport.webp",
+              "imageAlt": "Navigator Steel - dial and case detail",
+              "caption": "A closer look"
+            },
+            {
+              "image": "/images/watch-sport.webp",
+              "imageAlt": "Navigator Steel - full composition",
+              "caption": "The complete composition"
+            }
+          ],
+          "specifications": [
+            {
+              "label": "Reference",
+              "value": "NS-041-02"
+            },
+            {
+              "label": "Movement",
+              "value": "Self-winding mechanical"
+            },
+            {
+              "label": "Case diameter",
+              "value": "41 mm"
+            },
+            {
+              "label": "Case material",
+              "value": "Brushed stainless steel"
+            },
+            {
+              "label": "Strap / bracelet",
+              "value": "Steel bracelet"
+            },
+            {
+              "label": "Water resistance",
+              "value": "100 metres"
+            },
+            {
+              "label": "Power reserve",
+              "value": "60 hours"
+            }
+          ]
         },
         {
           "name": "Méridian Chronograph",
@@ -223,10 +311,54 @@
           "description": "Precise timing, beautifully considered.",
           "availability": "Available",
           "badge": "COLLECTOR’S CHOICE",
-          "href": "#contact",
+          "href": "/products/detail/?id=meridian-chronograph",
           "id": "meridian-chronograph",
           "addedAt": "2026-10-03",
-          "featuredOrder": 2
+          "featuredOrder": 2,
+          "reference": "MC-042-03",
+          "details": "For those who take a closer look. The Méridian Chronograph celebrates the rhythm of precision through considered detailing and a beautifully layered dial. The collection balances an expressive instrument-inspired aesthetic with the ease of a timepiece made to be worn, remembered, and worn again.",
+          "gallery": [
+            {
+              "image": "/images/watch-hero.webp",
+              "imageAlt": "Méridian Chronograph - dial and case detail",
+              "caption": "A closer look"
+            },
+            {
+              "image": "/images/watch-hero.webp",
+              "imageAlt": "Méridian Chronograph - full composition",
+              "caption": "The complete composition"
+            }
+          ],
+          "specifications": [
+            {
+              "label": "Reference",
+              "value": "MC-042-03"
+            },
+            {
+              "label": "Movement",
+              "value": "Automatic chronograph"
+            },
+            {
+              "label": "Case diameter",
+              "value": "42 mm"
+            },
+            {
+              "label": "Case material",
+              "value": "Stainless steel"
+            },
+            {
+              "label": "Strap / bracelet",
+              "value": "Leather strap"
+            },
+            {
+              "label": "Water resistance",
+              "value": "50 metres"
+            },
+            {
+              "label": "Power reserve",
+              "value": "48 hours"
+            }
+          ]
         },
         {
           "name": "Atelier No. 01",
@@ -237,10 +369,54 @@
           "description": "For those who see the extraordinary in the details.",
           "availability": "Limited availability",
           "badge": "LIMITED EDITION",
-          "href": "#contact",
+          "href": "/products/detail/?id=atelier-no-01",
           "id": "atelier-no-01",
           "addedAt": "2026-10-04",
-          "featuredOrder": 3
+          "featuredOrder": 3,
+          "reference": "AN-040-01",
+          "details": "An uncommon perspective on the passing of time. Atelier No. 01 brings together warm metallic tones, tactile materials, and a distinctive sense of proportion. Conceived as a small-edition study, it rewards attention with details that reveal themselves slowly.",
+          "gallery": [
+            {
+              "image": "/images/watch-limited.webp",
+              "imageAlt": "Atelier No. 01 - dial and case detail",
+              "caption": "A closer look"
+            },
+            {
+              "image": "/images/watch-limited.webp",
+              "imageAlt": "Atelier No. 01 - full composition",
+              "caption": "The complete composition"
+            }
+          ],
+          "specifications": [
+            {
+              "label": "Reference",
+              "value": "AN-040-01"
+            },
+            {
+              "label": "Movement",
+              "value": "Hand-wound mechanical"
+            },
+            {
+              "label": "Case diameter",
+              "value": "40 mm"
+            },
+            {
+              "label": "Case material",
+              "value": "Gold-tone stainless steel"
+            },
+            {
+              "label": "Strap / bracelet",
+              "value": "Woven textile strap"
+            },
+            {
+              "label": "Water resistance",
+              "value": "30 metres"
+            },
+            {
+              "label": "Power reserve",
+              "value": "42 hours"
+            }
+          ]
         }
       ],
       "collectionsEyebrow": "FIND YOUR EXPRESSION",
@@ -301,10 +477,54 @@
           "description": "A deep blue dial made for new horizons.",
           "availability": "Available",
           "badge": "NEW ARRIVAL",
-          "href": "#contact",
+          "href": "/products/detail/?id=coastal-blue",
           "id": "coastal-blue",
           "addedAt": "2026-11-01",
-          "featuredOrder": 4
+          "featuredOrder": 4,
+          "reference": "CB-040-05",
+          "details": "Inspired by the meeting of sea and sky, Coastal Blue is a study in relaxed precision. A cool-toned dial and considered steel finish offer a fresh expression of the Sport collection. Its versatile proportions make it an effortless companion for days that unfold without a plan.",
+          "gallery": [
+            {
+              "image": "/images/watch-chrono.webp",
+              "imageAlt": "Coastal Blue - dial and case detail",
+              "caption": "A closer look"
+            },
+            {
+              "image": "/images/watch-chrono.webp",
+              "imageAlt": "Coastal Blue - full composition",
+              "caption": "The complete composition"
+            }
+          ],
+          "specifications": [
+            {
+              "label": "Reference",
+              "value": "CB-040-05"
+            },
+            {
+              "label": "Movement",
+              "value": "Self-winding mechanical"
+            },
+            {
+              "label": "Case diameter",
+              "value": "40 mm"
+            },
+            {
+              "label": "Case material",
+              "value": "Stainless steel"
+            },
+            {
+              "label": "Strap / bracelet",
+              "value": "Steel bracelet"
+            },
+            {
+              "label": "Water resistance",
+              "value": "100 metres"
+            },
+            {
+              "label": "Power reserve",
+              "value": "60 hours"
+            }
+          ]
         },
         {
           "name": "Atelier Obsidian",
@@ -315,10 +535,54 @@
           "description": "Quiet confidence in an all-black expression.",
           "availability": "Limited availability",
           "badge": "NEW ARRIVAL",
-          "href": "#contact",
+          "href": "/products/detail/?id=atelier-obsidian",
           "id": "atelier-obsidian",
           "addedAt": "2026-11-02",
-          "featuredOrder": 5
+          "featuredOrder": 5,
+          "reference": "AO-040-06",
+          "details": "A darker expression of the Atelier spirit. Obsidian explores the interplay of shadow, texture, and reflected light, drawing the eye toward subtle changes in finish. Understated at first glance and distinctive on closer inspection, it is a timepiece with a quietly individual presence.",
+          "gallery": [
+            {
+              "image": "/images/watch-editorial.webp",
+              "imageAlt": "Atelier Obsidian - dial and case detail",
+              "caption": "A closer look"
+            },
+            {
+              "image": "/images/watch-editorial.webp",
+              "imageAlt": "Atelier Obsidian - full composition",
+              "caption": "The complete composition"
+            }
+          ],
+          "specifications": [
+            {
+              "label": "Reference",
+              "value": "AO-040-06"
+            },
+            {
+              "label": "Movement",
+              "value": "Hand-wound mechanical"
+            },
+            {
+              "label": "Case diameter",
+              "value": "40 mm"
+            },
+            {
+              "label": "Case material",
+              "value": "Black-tone stainless steel"
+            },
+            {
+              "label": "Strap / bracelet",
+              "value": "Leather strap"
+            },
+            {
+              "label": "Water resistance",
+              "value": "30 metres"
+            },
+            {
+              "label": "Power reserve",
+              "value": "42 hours"
+            }
+          ]
         },
         {
           "name": "Heritage Reserve",
@@ -329,10 +593,54 @@
           "description": "Classic proportions. A fresh perspective.",
           "availability": "Available",
           "badge": "NEW ARRIVAL",
-          "href": "#contact",
+          "href": "/products/detail/?id=heritage-reserve",
           "id": "heritage-reserve",
           "addedAt": "2026-11-03",
-          "featuredOrder": 6
+          "featuredOrder": 6,
+          "reference": "HR-039-07",
+          "details": "The Heritage Reserve distils the Classic collection into an enduring daily companion. Refined detailing and balanced proportions create a familiar ease, while its mechanical character invites a more personal connection to time. Thoughtful, composed, and ready for the next chapter.",
+          "gallery": [
+            {
+              "image": "/images/watch-sport.webp",
+              "imageAlt": "Heritage Reserve - dial and case detail",
+              "caption": "A closer look"
+            },
+            {
+              "image": "/images/watch-sport.webp",
+              "imageAlt": "Heritage Reserve - full composition",
+              "caption": "The complete composition"
+            }
+          ],
+          "specifications": [
+            {
+              "label": "Reference",
+              "value": "HR-039-07"
+            },
+            {
+              "label": "Movement",
+              "value": "Self-winding mechanical"
+            },
+            {
+              "label": "Case diameter",
+              "value": "39 mm"
+            },
+            {
+              "label": "Case material",
+              "value": "Polished stainless steel"
+            },
+            {
+              "label": "Strap / bracelet",
+              "value": "Leather strap"
+            },
+            {
+              "label": "Water resistance",
+              "value": "50 metres"
+            },
+            {
+              "label": "Power reserve",
+              "value": "72 hours"
+            }
+          ]
         },
         {
           "name": "Méridian Rose",
@@ -343,10 +651,54 @@
           "description": "Warm metallic details and mechanical character.",
           "availability": "Available",
           "badge": "NEW ARRIVAL",
-          "href": "#contact",
+          "href": "/products/detail/?id=meridian-rose",
           "id": "meridian-rose",
           "addedAt": "2026-11-04",
-          "featuredOrder": 7
+          "featuredOrder": 7,
+          "reference": "MR-042-08",
+          "details": "Warmth meets precision in the Méridian Rose. A rose-toned case gives the chronograph a softer point of view, complemented by a carefully composed dial and supple strap. It is an expressive addition to the collection, designed for moments that deserve a little more attention.",
+          "gallery": [
+            {
+              "image": "/images/watch-limited.webp",
+              "imageAlt": "Méridian Rose - dial and case detail",
+              "caption": "A closer look"
+            },
+            {
+              "image": "/images/watch-limited.webp",
+              "imageAlt": "Méridian Rose - full composition",
+              "caption": "The complete composition"
+            }
+          ],
+          "specifications": [
+            {
+              "label": "Reference",
+              "value": "MR-042-08"
+            },
+            {
+              "label": "Movement",
+              "value": "Automatic chronograph"
+            },
+            {
+              "label": "Case diameter",
+              "value": "42 mm"
+            },
+            {
+              "label": "Case material",
+              "value": "Rose-tone stainless steel"
+            },
+            {
+              "label": "Strap / bracelet",
+              "value": "Leather strap"
+            },
+            {
+              "label": "Water resistance",
+              "value": "50 metres"
+            },
+            {
+              "label": "Power reserve",
+              "value": "48 hours"
+            }
+          ]
         }
       ],
       "reviewsEyebrow": "TIME, WELL SHARED",
@@ -385,7 +737,7 @@
       "tone": "Modern luxury, refined, editorial and welcoming",
       "outputLanguage": "English",
       "businessSummary": "AUREL TIMEPIECES is a premium luxury watch boutique, with Classic, Sport, Chronograph and Limited Edition collections.",
-      "additionalBusinessDetails": "Phase 2A: homepage, Shop and Collections. Reference catalog and imagery; no watch-detail, cart, checkout or payment implementation.",
+      "additionalBusinessDetails": "Phase 2B: homepage, Shop, Collections, and query-routed Watch Details. Reference imagery and illustrative specifications; no cart, checkout, or payments.",
       "referenceWebsiteUrl": "",
       "guidanceNotes": {}
     },
@@ -423,9 +775,9 @@
       "filterSummary": "A considered selection, made personal.",
       "emptyTitle": "A different moment awaits.",
       "emptyDescription": "No timepieces match your selection. Try another name or reset the filters to explore the full catalog.",
-      "actionLabel": "View in catalog",
+      "actionLabel": "View timepiece",
       "selectedLabel": "Selected timepiece",
-      "selectionNote": "You are viewing this watch in the catalog. Full watch details are reserved for a later phase."
+      "selectionNote": "Explore the full details of this timepiece using its product link."
     },
     "collectionsPage": {
       "eyebrow": "FOUR EXPRESSIONS OF TIME",
@@ -438,6 +790,41 @@
       "collectionCta": "Shop this collection",
       "countLabel": "timepieces in this edit",
       "note": "Reference imagery and illustrative collections. Discover the full selection in our catalog."
+    },
+    "productDetails": {
+      "pageTitle": "Timepiece details",
+      "eyebrow": "THE ART OF THE DETAIL",
+      "referenceLabel": "REFERENCE",
+      "primaryImageLabel": "The timepiece",
+      "zoomLabel": "Enlarge image",
+      "previousLabel": "Previous",
+      "nextLabel": "Next",
+      "priceNote": "Reference catalog price. Confirm current pricing with our concierge.",
+      "enquireLabel": "Enquire about this timepiece",
+      "enquiryNote": "A personal conversation. An informed choice.",
+      "serviceTitle": "Considered, from first look to final detail.",
+      "serviceDescription": "Ask our concierge about this timepiece, its provenance, and the finer details.",
+      "discoverLabel": "Discover the details",
+      "descriptionTitle": "Character, in every detail.",
+      "specificationsTitle": "The particulars",
+      "specificationsEmpty": "Our concierge can help with the technical details of this timepiece.",
+      "demoNote": "Reference photography and illustrative specifications. Confirm all details, availability, and service terms with the boutique.",
+      "relatedEyebrow": "CONTINUE YOUR DISCOVERY",
+      "relatedTitle": "A shared sense of distinction.",
+      "relatedEmpty": "Explore the collection as new timepieces arrive.",
+      "backLabel": "Explore all timepieces",
+      "backUrl": "/shop/",
+      "enquiryTitle": "Your personal concierge",
+      "enquiryDescription": "Continue your enquiry through your preferred contact channel. Your selected timepiece and reference will be included.",
+      "enquiryMessage": "I would like to know more about",
+      "emailLabel": "Enquire by email",
+      "whatsappLabel": "Enquire on WhatsApp",
+      "enquiryDemo": "This is a demonstration enquiry. No message has been sent. Boutique contact channels have not been connected.",
+      "closeEnquiryLabel": "Return to the timepiece",
+      "loadingTitle": "Finding your timepiece...",
+      "missingTitle": "A moment to rediscover.",
+      "missingDescription": "This timepiece could not be found. Explore our current selection or search for another watch.",
+      "discoverUrl": "#watch-story"
     }
   },
   "styles": {

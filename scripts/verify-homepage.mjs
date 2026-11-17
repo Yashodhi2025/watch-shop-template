@@ -77,12 +77,17 @@ try {
   await pause(150);
   assert.equal(await evaluate('document.querySelectorAll(".search-results > a").length'), 1);
   await evaluate('document.querySelector(".search-results a").click()');
-  assert.match(await evaluate('document.querySelector(".enquiry-status").textContent'), /Navigator Steel/);
+  for (let attempt = 0; attempt < 50; attempt++) {
+    if (await evaluate('document.querySelector(".detail-product")?.dataset.productId === "navigator-steel"')) break;
+    await pause(100);
+  }
+  assert.match(await evaluate('document.querySelector(".detail-title").textContent'), /Navigator Steel/);
+  await browser.navigate('/');
   await evaluate('document.querySelector(".bag-button").click()');
   assert.equal(await evaluate('document.querySelector(".bag-dialog").open'), true);
   await evaluate('document.querySelector(".bag-dialog .button").click()');
   assert.equal(await evaluate('document.querySelector(".bag-dialog").open'), false);
-  findings.push('Mobile navigation, collection filtering, live search, enquiry selection and bag notice work.');
+  findings.push('Mobile navigation, collection filtering, search-to-details navigation and bag notice work.');
   assert.equal(await evaluate(`(() => { const input = document.querySelector('#newsletter-email'); input.value='invalid'; return input.checkValidity(); })()`), false);
   await evaluate(`(() => { const input = document.querySelector('#newsletter-email'); input.value='client@example.com'; document.querySelector('.newsletter-form').requestSubmit(); })()`);
   await pause(100);

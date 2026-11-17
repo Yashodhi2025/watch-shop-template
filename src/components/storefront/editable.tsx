@@ -29,10 +29,10 @@ export function Text({ path: suppliedPath, "data-preview-field-path": fieldPath,
   return id ? <div id={id} style={{ display: "contents" }}>{element}</div> : element;
 }
 
-const anchors = new Set(["#top", "#featured", "#collections", "#story", "#arrivals", "#reviews", "#newsletter", "#contact"]);
+const anchors = new Set(["#top", "#featured", "#collections", "#story", "#arrivals", "#reviews", "#newsletter", "#contact", "#watch-story"]);
 export function safeHref(raw: string, fallback = "#contact") {
   if (anchors.has(raw)) return raw;
-  if (/^\/(?:shop\/?|collections\/?)?(?:[?#].*)?$/.test(raw)) return withBasePath(raw);
+  if (/^\/(?:shop\/?|collections\/?|products\/detail\/?)?(?:[?#].*)?$/.test(raw)) return withBasePath(raw);
   if (/^https?:\/\//i.test(raw)) return raw;
   if (/^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(raw)) return raw;
   return fallback;

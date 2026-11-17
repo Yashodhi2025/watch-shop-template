@@ -55,8 +55,7 @@ export function useCatalog(): CatalogEntry[] {
   }, [data?.content]);
 }
 
-// Use the native Fivora URL. The approved compatibility page hands it to Shop
-// until a future phase implements the actual Watch Details experience.
+// Native query routing supports products added after the static export.
 export function catalogProductHref(id: string) {
   return platformProductDetailHref(id);
 }

@@ -83,12 +83,12 @@ try {
   const links = await evaluate('Array.from(document.querySelectorAll(".catalog-grid .watch-image-link"),link=>link.href)');
   assert.equal(new Set(links.map(link => new URL(link).searchParams.get('id'))).size, 8);
   assert.ok(links.every(link => new URL(link).pathname.endsWith('/products/detail/')));
-  await evaluate('document.querySelector(".catalog-grid .watch-image-link").click()'); await waitForPath('/shop/');
-  assert.equal(await evaluate('document.querySelectorAll(".watch-card.is-selected").length'), 1);
-  assert.equal(await evaluate('document.activeElement.id'), 'watch-heritage-automatic');
-  assert.match(await evaluate('document.querySelector(".catalog-selection").textContent'), /Heritage Automatic/);
-  findings.push('All eight product links use native Fivora query URLs; the routing-only handoff returns to Shop and focuses the correct catalog card.');
+  await evaluate('document.querySelector(".catalog-grid .watch-image-link").click()'); await waitForPath('/products/detail/');
+  assert.equal(await evaluate('document.querySelector(".detail-product").dataset.productId'), 'heritage-automatic');
+  assert.match(await evaluate('document.querySelector(".detail-title").textContent'), /Heritage Automatic/);
+  findings.push('All eight product links use native Fivora query URLs; each watch now opens its details page.');
 
+  await navigate('/shop/');
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 1000, deviceScaleFactor: 1, mobile: true });
   await evaluate('document.querySelector(".mobile-toggle").click()');
   assert.equal(await evaluate('document.querySelector(".mobile-toggle").ariaExpanded'), 'true');
@@ -131,8 +131,9 @@ try {
   expanded.content.home.arrivals.push({ id: 'future-aurel-watch', name: 'Future AUREL Watch', collection: 'Classic', price: '$2,900', availability: 'Available' });
   await mutate(expanded); await pause(850);
   assert.equal((await names()).length, 9);
-  await evaluate('document.getElementById("watch-future-aurel-watch").querySelector("a").click()'); await waitForPath('/shop/');
-  assert.equal(await evaluate('document.activeElement.id'), 'watch-future-aurel-watch');
+  await evaluate('document.getElementById("watch-future-aurel-watch").querySelector("a").click()'); await waitForPath('/products/detail/');
+  assert.equal(await evaluate('document.querySelector(".detail-product").dataset.productId'), 'future-aurel-watch');
+  await navigate('/shop/');
   await mutate(seed); await pause(850);
   const empty = structuredClone(seed);
   empty.content.home.products = []; empty.content.home.arrivals = [];
@@ -151,7 +152,7 @@ try {
   assert.ok(await evaluate('!!document.querySelector(".collection-editorial-grid")'));
   await mutate(seed);
   findings.push('Missing optional fields/IDs, fallback images/prices/availability, empty catalog/collections and live Fivora content/style edits pass.');
-  findings.push('A product added after the static build can navigate through the compatibility handoff and be selected in Shop.');
+  findings.push('A product added after the static build can open its details page.');
 
   await navigate('/');
   assert.equal(await evaluate('document.querySelectorAll(".watch-card").length'), 8);
@@ -161,8 +162,9 @@ try {
   await evaluate('document.querySelector(".header-actions button").click()');
   await set('#watch-search', 'Navigator');
   await evaluate('document.querySelector(".search-results a").click()');
-  assert.match(await evaluate('document.querySelector(".enquiry-status").textContent'), /Navigator Steel/);
-  findings.push('Homepage collection filtering, search and enquiry selection remain functional.');
+  await waitForPath('/products/detail/');
+  assert.match(await evaluate('document.querySelector(".detail-title").textContent'), /Navigator Steel/);
+  findings.push('Homepage collection filtering and search-to-details navigation remain functional.');
   assert.deepEqual(errors, []);
   findings.push('No browser runtime exceptions.');
   await writeFile(join(reportDir, 'phase2a-results.json'), JSON.stringify({ passed: true, findings }, null, 2));

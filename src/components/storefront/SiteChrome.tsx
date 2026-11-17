@@ -17,7 +17,7 @@ function Brand() {
 }
 
 
-export default function SiteChrome({ page, selectedWatch = "", onEnquire, children }: { page: "home" | "shop" | "collections"; selectedWatch?: string; onEnquire?: (name: string) => void; children: ReactNode }) {
+export default function SiteChrome({ page, selectedWatch = "", onEnquire, children }: { page: "home" | "shop" | "collections" | "product_link"; selectedWatch?: string; onEnquire?: (name: string) => void; children: ReactNode }) {
   const { text, list } = useContent();
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -34,7 +34,7 @@ export default function SiteChrome({ page, selectedWatch = "", onEnquire, childr
   const enquire = (name: string) => { onEnquire?.(name); searchDialog.current?.close(); setMenuOpen(false); };
   const closeOnBackdrop = (event: React.MouseEvent<HTMLDialogElement>) => { if (event.target === event.currentTarget) event.currentTarget.close(); };
   return <div id="top" className="storefront" data-preview-page-key={page}>
-    <a className="skip-link" href={page === "home" ? "#featured" : page === "shop" ? "#catalog" : "#collection-edit"} data-preview-static="accessibility">Skip to content</a>
+    <a className="skip-link" href={page === "home" ? "#featured" : page === "shop" ? "#catalog" : page === "product_link" ? "#watch-details" : "#collection-edit"} data-preview-static="accessibility">Skip to content</a>
     <div className="announcement" data-design-section="announcement"><span className="announcement-spacer" /><Text data-preview-field-path="common.announcement" fallback="Discover the AUREL collection" /><span className="announcement-detail"><Text data-preview-field-path="common.announcementDetail" /></span></div>
     <header className="site-header" data-design-section="navigation">
       <div className="header-inner shell">
@@ -65,7 +65,7 @@ export default function SiteChrome({ page, selectedWatch = "", onEnquire, childr
     <dialog ref={searchDialog} className="store-dialog search-dialog" onClick={closeOnBackdrop} aria-labelledby="search-title">
       <div className="dialog-head"><Text data-preview-field-path="common.searchLabel" as="h2" id="search-title" /><button type="button" className="icon-button" data-preview-field-path="common.closeLabel" aria-label={text("common.closeLabel", "Close")} onClick={() => searchDialog.current?.close()}><span aria-hidden="true">&times;</span></button></div>
       <label className="sr-only" htmlFor="watch-search"><Text data-preview-field-path="common.searchLabel" /></label><input id="watch-search" ref={searchInput} type="search" data-preview-field-path="common.searchPlaceholder" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={text("common.searchPlaceholder", "Search watches")} autoComplete="off" />
-      <div className="search-results" aria-live="polite">{results.length ? results.map(({ path, id }) => <a key={path} href={page === "home" ? "#contact" : catalogProductHref(id)} data-preview-field-path={path + (page === "home" ? ".href" : ".id")} onClick={() => enquire(text(`${path}.name`))}><Photo path={`${path}.image`} altPath={`${path}.imageAlt`} /><span><Text path={`${path}.name`} as="strong" /><Text path={`${path}.collection`} as="span" /></span><Text path={`${path}.price`} /></a>) : <Text data-preview-field-path="common.searchEmpty" as="p" />}</div>
+      <div className="search-results" aria-live="polite">{results.length ? results.map(({ path, id }) => <a key={path} href={catalogProductHref(id)} data-preview-field-path={path + ".id"} onClick={() => enquire(text(`${path}.name`))}><Photo path={`${path}.image`} altPath={`${path}.imageAlt`} /><span><Text path={`${path}.name`} as="strong" /><Text path={`${path}.collection`} as="span" /></span><Text path={`${path}.price`} /></a>) : <Text data-preview-field-path="common.searchEmpty" as="p" />}</div>
     </dialog>
     <dialog ref={bagDialog} className="store-dialog bag-dialog" onClick={closeOnBackdrop} aria-labelledby="bag-title">
       <div className="dialog-head"><Text data-preview-field-path="common.bagLabel" as="h2" /><button type="button" className="icon-button" data-preview-field-path="common.closeLabel" aria-label={text("common.closeLabel", "Close")} onClick={() => bagDialog.current?.close()}><span aria-hidden="true">&times;</span></button></div><Mark /><Text data-preview-field-path="common.bagTitle" as="h3" id="bag-title" /><Text data-preview-field-path="common.bagDescription" as="p" /><button type="button" className="button button-navy" onClick={() => bagDialog.current?.close()}><Text data-preview-field-path="common.bagCta" /><Arrow /></button>

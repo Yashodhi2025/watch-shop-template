@@ -45,7 +45,45 @@
       "shop.actionLabel",
       "collectionsPage.collectionCta",
       "collectionsPage.countLabel",
-      "home.collections[*].shopHref"
+      "home.collections[*].shopHref",
+      "home.products[*].gallery[*].imageAlt",
+      "home.arrivals[*].gallery[*].imageAlt",
+      "productDetails.pageTitle",
+      "productDetails.specificationsEmpty",
+      "productDetails.relatedEmpty",
+      "productDetails.enquiryTitle",
+      "productDetails.enquiryDescription",
+      "productDetails.enquiryMessage",
+      "productDetails.emailLabel",
+      "productDetails.whatsappLabel",
+      "productDetails.enquiryDemo",
+      "productDetails.closeEnquiryLabel",
+      "productDetails.loadingTitle",
+      "productDetails.missingTitle",
+      "productDetails.missingDescription",
+      "productDetails.previousLabel",
+      "productDetails.nextLabel",
+      "common.routingCta",
+      "common.routingLabel",
+      "common.routingNote",
+      "productDetails.eyebrow",
+      "productDetails.referenceLabel",
+      "productDetails.primaryImageLabel",
+      "productDetails.zoomLabel",
+      "productDetails.priceNote",
+      "productDetails.enquireLabel",
+      "productDetails.enquiryNote",
+      "productDetails.serviceTitle",
+      "productDetails.serviceDescription",
+      "productDetails.discoverLabel",
+      "productDetails.descriptionTitle",
+      "productDetails.specificationsTitle",
+      "productDetails.demoNote",
+      "productDetails.relatedEyebrow",
+      "productDetails.relatedTitle",
+      "productDetails.backLabel",
+      "productDetails.backUrl",
+      "productDetails.discoverUrl"
     ]
   },
   "siteDataFile": "src/data/site-data.json",
@@ -77,10 +115,10 @@
     },
     {
       "id": "product_link",
-      "label": "Catalog link handoff",
+      "label": "Watch Details",
       "route": "/products/detail",
       "required": true,
-      "description": "Routing-only compatibility page. Returns the product ID to Shop; no Watch Details UI."
+      "description": "Luxury timepiece details, editable gallery and specifications, concierge enquiry, and related watches. Stable client-side ID routing."
     }
   ],
   "editorSchema": {
@@ -772,10 +810,62 @@
             "key": "featuredOrder",
             "type": "number",
             "label": "Featured sort order"
+          },
+          {
+            "key": "reference",
+            "type": "text",
+            "label": "Reference"
+          },
+          {
+            "key": "details",
+            "type": "textarea",
+            "label": "Full product description"
+          },
+          {
+            "key": "gallery",
+            "type": "list",
+            "label": "Additional gallery images",
+            "itemLabel": "Gallery image",
+            "fields": [
+              {
+                "key": "image",
+                "type": "image",
+                "label": "Image"
+              },
+              {
+                "key": "imageAlt",
+                "type": "text",
+                "label": "Image alternative text"
+              },
+              {
+                "key": "caption",
+                "type": "text",
+                "label": "Caption"
+              }
+            ]
+          },
+          {
+            "key": "specifications",
+            "type": "list",
+            "label": "Specifications",
+            "itemLabel": "Specification",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label"
+              },
+              {
+                "key": "value",
+                "type": "text",
+                "label": "Value"
+              }
+            ]
           }
         ],
         "id": "home.products",
-        "path": "home.products"
+        "path": "home.products",
+        "pageKey": "product_link"
       },
       {
         "type": "list",
@@ -841,10 +931,62 @@
             "key": "featuredOrder",
             "type": "number",
             "label": "Featured sort order"
+          },
+          {
+            "key": "reference",
+            "type": "text",
+            "label": "Reference"
+          },
+          {
+            "key": "details",
+            "type": "textarea",
+            "label": "Full product description"
+          },
+          {
+            "key": "gallery",
+            "type": "list",
+            "label": "Additional gallery images",
+            "itemLabel": "Gallery image",
+            "fields": [
+              {
+                "key": "image",
+                "type": "image",
+                "label": "Image"
+              },
+              {
+                "key": "imageAlt",
+                "type": "text",
+                "label": "Image alternative text"
+              },
+              {
+                "key": "caption",
+                "type": "text",
+                "label": "Caption"
+              }
+            ]
+          },
+          {
+            "key": "specifications",
+            "type": "list",
+            "label": "Specifications",
+            "itemLabel": "Specification",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Label"
+              },
+              {
+                "key": "value",
+                "type": "text",
+                "label": "Value"
+              }
+            ]
           }
         ],
         "id": "home.arrivals",
-        "path": "home.arrivals"
+        "path": "home.arrivals",
+        "pageKey": "product_link"
       },
       {
         "type": "list",
@@ -1124,6 +1266,180 @@
             "key": "note",
             "type": "textarea",
             "label": "Note"
+          }
+        ]
+      },
+      {
+        "id": "productDetails",
+        "path": "productDetails",
+        "pageKey": "product_link",
+        "type": "object",
+        "label": "Watch Details & Concierge",
+        "fields": [
+          {
+            "key": "pageTitle",
+            "type": "text",
+            "label": "Page Title"
+          },
+          {
+            "key": "eyebrow",
+            "type": "text",
+            "label": "Eyebrow"
+          },
+          {
+            "key": "referenceLabel",
+            "type": "text",
+            "label": "Reference Label"
+          },
+          {
+            "key": "primaryImageLabel",
+            "type": "text",
+            "label": "Primary Image Label"
+          },
+          {
+            "key": "zoomLabel",
+            "type": "text",
+            "label": "Zoom Label"
+          },
+          {
+            "key": "previousLabel",
+            "type": "text",
+            "label": "Previous Label"
+          },
+          {
+            "key": "nextLabel",
+            "type": "text",
+            "label": "Next Label"
+          },
+          {
+            "key": "priceNote",
+            "type": "textarea",
+            "label": "Price Note"
+          },
+          {
+            "key": "enquireLabel",
+            "type": "text",
+            "label": "Enquire Label"
+          },
+          {
+            "key": "enquiryNote",
+            "type": "textarea",
+            "label": "Enquiry Note"
+          },
+          {
+            "key": "serviceTitle",
+            "type": "text",
+            "label": "Service Title"
+          },
+          {
+            "key": "serviceDescription",
+            "type": "textarea",
+            "label": "Service Description"
+          },
+          {
+            "key": "discoverLabel",
+            "type": "text",
+            "label": "Discover Label"
+          },
+          {
+            "key": "descriptionTitle",
+            "type": "text",
+            "label": "Description Title"
+          },
+          {
+            "key": "specificationsTitle",
+            "type": "text",
+            "label": "Specifications Title"
+          },
+          {
+            "key": "specificationsEmpty",
+            "type": "textarea",
+            "label": "Specifications Empty"
+          },
+          {
+            "key": "demoNote",
+            "type": "textarea",
+            "label": "Demo Note"
+          },
+          {
+            "key": "relatedEyebrow",
+            "type": "text",
+            "label": "Related Eyebrow"
+          },
+          {
+            "key": "relatedTitle",
+            "type": "text",
+            "label": "Related Title"
+          },
+          {
+            "key": "relatedEmpty",
+            "type": "textarea",
+            "label": "Related Empty"
+          },
+          {
+            "key": "backLabel",
+            "type": "text",
+            "label": "Back Label"
+          },
+          {
+            "key": "backUrl",
+            "type": "url",
+            "label": "Back Url"
+          },
+          {
+            "key": "enquiryTitle",
+            "type": "text",
+            "label": "Enquiry Title"
+          },
+          {
+            "key": "enquiryDescription",
+            "type": "textarea",
+            "label": "Enquiry Description"
+          },
+          {
+            "key": "enquiryMessage",
+            "type": "text",
+            "label": "Enquiry Message"
+          },
+          {
+            "key": "emailLabel",
+            "type": "text",
+            "label": "Email Label"
+          },
+          {
+            "key": "whatsappLabel",
+            "type": "text",
+            "label": "Whatsapp Label"
+          },
+          {
+            "key": "enquiryDemo",
+            "type": "textarea",
+            "label": "Enquiry Demo"
+          },
+          {
+            "key": "closeEnquiryLabel",
+            "type": "text",
+            "label": "Close Enquiry Label"
+          },
+          {
+            "key": "loadingTitle",
+            "type": "text",
+            "label": "Loading Title"
+          },
+          {
+            "key": "missingTitle",
+            "type": "text",
+            "label": "Missing Title"
+          },
+          {
+            "key": "missingDescription",
+            "type": "textarea",
+            "label": "Missing Description"
+          },
+          {
+            "key": "discoverUrl",
+            "type": "url",
+            "label": "Discover details destination"
           }
         ]
       }
