@@ -97,7 +97,34 @@
       "cart.continueUrl",
       "cart.removeLabel",
       "cart.addLabel",
-      "cart.addedLabel"
+      "cart.addedLabel",
+      "checkout.eyebrow",
+      "checkout.title",
+      "checkout.nameLabel",
+      "checkout.phoneLabel",
+      "checkout.addressLabel",
+      "checkout.notesLabel",
+      "checkout.summaryTitle",
+      "checkout.subtotalLabel",
+      "checkout.priceNote",
+      "checkout.priceUnknown",
+      "checkout.enquiryNote",
+      "checkout.submitLabel",
+      "checkout.handoffNote",
+      "checkout.setupLabel",
+      "checkout.validationLabel",
+      "checkout.emptyLabel",
+      "checkout.whatsappNumber",
+      "checkout.messageTitle",
+      "checkout.cartUrl",
+      "checkout.backLabel",
+      "checkout.checkoutUrl",
+      "checkout.continueLabel",
+      "about.heroImageAlt",
+      "about.editorialImageAlt",
+      "checkout.contactLabel",
+      "about.craftImageAlt",
+      "about.designImageAlt"
     ]
   },
   "siteDataFile": "src/data/site-data.json",
@@ -138,6 +165,18 @@
       "id": "cart",
       "label": "Shopping Cart",
       "route": "/cart",
+      "required": true
+    },
+    {
+      "id": "checkout",
+      "label": "WhatsApp Enquiry",
+      "route": "/checkout",
+      "required": true
+    },
+    {
+      "id": "about",
+      "label": "Our Story",
+      "route": "/about",
       "required": true
     }
   ],
@@ -1539,6 +1578,254 @@
             "key": "addedLabel",
             "type": "text",
             "label": "addedLabel"
+          }
+        ]
+      },
+      {
+        "id": "checkout",
+        "path": "checkout",
+        "pageKey": "checkout",
+        "type": "object",
+        "label": "WhatsApp Enquiry Checkout",
+        "fields": [
+          {
+            "key": "eyebrow",
+            "type": "text",
+            "label": "eyebrow"
+          },
+          {
+            "key": "title",
+            "type": "text",
+            "label": "title"
+          },
+          {
+            "key": "nameLabel",
+            "type": "text",
+            "label": "nameLabel"
+          },
+          {
+            "key": "phoneLabel",
+            "type": "text",
+            "label": "phoneLabel"
+          },
+          {
+            "key": "addressLabel",
+            "type": "text",
+            "label": "addressLabel"
+          },
+          {
+            "key": "notesLabel",
+            "type": "text",
+            "label": "notesLabel"
+          },
+          {
+            "key": "summaryTitle",
+            "type": "text",
+            "label": "summaryTitle"
+          },
+          {
+            "key": "subtotalLabel",
+            "type": "text",
+            "label": "subtotalLabel"
+          },
+          {
+            "key": "priceNote",
+            "type": "text",
+            "label": "priceNote"
+          },
+          {
+            "key": "priceUnknown",
+            "type": "text",
+            "label": "priceUnknown"
+          },
+          {
+            "key": "enquiryNote",
+            "type": "text",
+            "label": "enquiryNote"
+          },
+          {
+            "key": "submitLabel",
+            "type": "text",
+            "label": "submitLabel"
+          },
+          {
+            "key": "handoffNote",
+            "type": "text",
+            "label": "handoffNote"
+          },
+          {
+            "key": "setupLabel",
+            "type": "text",
+            "label": "setupLabel"
+          },
+          {
+            "key": "validationLabel",
+            "type": "text",
+            "label": "validationLabel"
+          },
+          {
+            "key": "emptyLabel",
+            "type": "text",
+            "label": "emptyLabel"
+          },
+          {
+            "key": "whatsappNumber",
+            "type": "text",
+            "label": "whatsappNumber"
+          },
+          {
+            "key": "messageTitle",
+            "type": "text",
+            "label": "messageTitle"
+          },
+          {
+            "key": "cartUrl",
+            "type": "url",
+            "label": "cartUrl"
+          },
+          {
+            "key": "backLabel",
+            "type": "text",
+            "label": "backLabel"
+          },
+          {
+            "key": "checkoutUrl",
+            "type": "url",
+            "label": "checkoutUrl"
+          },
+          {
+            "key": "continueLabel",
+            "type": "text",
+            "label": "continueLabel"
+          },
+          {
+            "key": "contactLabel",
+            "type": "text",
+            "label": "Business WhatsApp label"
+          }
+        ]
+      },
+      {
+        "id": "about",
+        "path": "about",
+        "pageKey": "about",
+        "type": "object",
+        "label": "Our Story",
+        "fields": [
+          {
+            "key": "eyebrow",
+            "type": "text",
+            "label": "eyebrow"
+          },
+          {
+            "key": "title",
+            "type": "text",
+            "label": "title"
+          },
+          {
+            "key": "introduction",
+            "type": "textarea",
+            "label": "introduction"
+          },
+          {
+            "key": "heroImage",
+            "type": "image",
+            "label": "heroImage"
+          },
+          {
+            "key": "heroImageAlt",
+            "type": "text",
+            "label": "heroImageAlt"
+          },
+          {
+            "key": "craftEyebrow",
+            "type": "text",
+            "label": "craftEyebrow"
+          },
+          {
+            "key": "craftTitle",
+            "type": "text",
+            "label": "craftTitle"
+          },
+          {
+            "key": "craftDescription",
+            "type": "textarea",
+            "label": "craftDescription"
+          },
+          {
+            "key": "designEyebrow",
+            "type": "text",
+            "label": "designEyebrow"
+          },
+          {
+            "key": "designTitle",
+            "type": "text",
+            "label": "designTitle"
+          },
+          {
+            "key": "designDescription",
+            "type": "textarea",
+            "label": "designDescription"
+          },
+          {
+            "key": "editorialImage",
+            "type": "image",
+            "label": "editorialImage"
+          },
+          {
+            "key": "editorialImageAlt",
+            "type": "text",
+            "label": "editorialImageAlt"
+          },
+          {
+            "key": "imageCaption",
+            "type": "text",
+            "label": "imageCaption"
+          },
+          {
+            "key": "ctaTitle",
+            "type": "text",
+            "label": "ctaTitle"
+          },
+          {
+            "key": "ctaDescription",
+            "type": "textarea",
+            "label": "ctaDescription"
+          },
+          {
+            "key": "ctaLabel",
+            "type": "text",
+            "label": "ctaLabel"
+          },
+          {
+            "key": "ctaUrl",
+            "type": "url",
+            "label": "ctaUrl"
+          },
+          {
+            "key": "demoNote",
+            "type": "text",
+            "label": "demoNote"
+          },
+          {
+            "key": "craftImage",
+            "type": "image",
+            "label": "craftImage"
+          },
+          {
+            "key": "craftImageAlt",
+            "type": "text",
+            "label": "craftImageAlt"
+          },
+          {
+            "key": "designImage",
+            "type": "image",
+            "label": "designImage"
+          },
+          {
+            "key": "designImageAlt",
+            "type": "text",
+            "label": "designImageAlt"
           }
         ]
       }

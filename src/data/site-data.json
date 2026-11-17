@@ -20,7 +20,9 @@
         "shop",
         "collections",
         "product_link",
-        "cart"
+        "cart",
+        "checkout",
+        "about"
       ],
       "theme": {
         "primaryColor": "#101A2B",
@@ -51,7 +53,9 @@
       "shop",
       "collections",
       "product_link",
-      "cart"
+      "cart",
+      "checkout",
+      "about"
     ],
     "requiredFeatures": []
   },
@@ -107,7 +111,7 @@
         },
         {
           "label": "Our story",
-          "href": "/#story"
+          "href": "/about/"
         }
       ],
       "supportLinks": [
@@ -141,7 +145,7 @@
         "home": "/",
         "shop": "/shop/",
         "collections": "/collections/",
-        "about": "/#story",
+        "about": "/about/",
         "contact": "/#contact"
       },
       "routingLabel": "Discover the timepiece",
@@ -837,12 +841,62 @@
       "itemsLabel": "Items",
       "subtotalLabel": "Subtotal",
       "note": "USD reference prices. Delivery and taxes are not calculated. Watches with unconfirmed prices cannot be added.",
-      "checkoutNote": "Checkout is unavailable in this demo. No orders or payments are accepted.",
+      "checkoutNote": "Continue to WhatsApp to enquire about your selection. No order is confirmed and no payment is taken.",
       "continueLabel": "Continue shopping",
       "continueUrl": "/shop/",
       "removeLabel": "Remove",
       "addLabel": "Add to Bag",
       "addedLabel": "Added to your bag."
+    },
+    "checkout": {
+      "eyebrow": "YOUR PERSONAL CONCIERGE",
+      "title": "A conversation, beautifully considered.",
+      "nameLabel": "Customer name",
+      "phoneLabel": "Phone number",
+      "addressLabel": "Delivery address",
+      "notesLabel": "Notes (optional)",
+      "summaryTitle": "Your selected timepieces",
+      "subtotalLabel": "Estimated subtotal",
+      "priceNote": "USD reference prices only. Taxes, delivery, availability and final pricing must be confirmed with the boutique. Unpriced items are excluded from the estimate.",
+      "priceUnknown": "Price on request",
+      "enquiryNote": "This is an enquiry only, not a confirmed order or payment.",
+      "submitLabel": "Continue to WhatsApp",
+      "handoffNote": "WhatsApp opens with a prepared message. Review and send it yourself. Your cart stays saved; no message is sent automatically.",
+      "setupLabel": "WhatsApp enquiry is not configured. The boutique must set a valid international WhatsApp number, including its country code.",
+      "validationLabel": "Please complete the required fields and enter a valid phone number.",
+      "emptyLabel": "Your bag is empty.",
+      "whatsappNumber": "94771234567",
+      "messageTitle": "AUREL TIMEPIECES - Watch enquiry",
+      "cartUrl": "/cart/",
+      "backLabel": "Return to bag",
+      "checkoutUrl": "/checkout/",
+      "continueLabel": "Continue to Checkout",
+      "contactLabel": "Business WhatsApp"
+    },
+    "about": {
+      "eyebrow": "AUREL TIMEPIECES",
+      "title": "Our Story",
+      "introduction": "A considered perspective on time. AUREL is a demonstration boutique exploring watches through thoughtful design, personal expression, and the pleasure of everyday rituals.",
+      "heroImage": "/images/watch-editorial.webp",
+      "heroImageAlt": "A watch photographed in an editorial lifestyle setting",
+      "craftEyebrow": "AN APPRECIATION OF DETAIL",
+      "craftTitle": "Craftsmanship, observed.",
+      "craftDescription": "We are drawn to the small decisions that give a watch its character: the shape of a case, the balance of a dial, and the way a surface catches the light. Our selection invites a closer look at those details, without losing sight of the experience of wearing a watch.",
+      "designEyebrow": "OUR POINT OF VIEW",
+      "designTitle": "Design with quiet presence.",
+      "designDescription": "For us, good design feels considered rather than complicated. Proportion, legibility, and texture form a language that can be expressive or restrained. The AUREL collection explores that range, helping you discover a timepiece that reflects your own point of view.",
+      "editorialImage": "/images/watch-classic.webp",
+      "editorialImageAlt": "A classic watch worn with tailored everyday clothing",
+      "imageCaption": "A personal detail. An everyday companion.",
+      "ctaTitle": "Find your own expression.",
+      "ctaDescription": "Explore the Classic, Sport, Chronograph, and Limited Edition edits.",
+      "ctaLabel": "Explore Collections",
+      "ctaUrl": "/collections/",
+      "demoNote": "AUREL is a demo brand. Photography and product information are illustrative; no manufacturing or provenance claims are implied.",
+      "craftImage": "/images/watch-hero.webp",
+      "craftImageAlt": "Close view of an ivory watch dial and mechanical details",
+      "designImage": "/images/watch-sport.webp",
+      "designImageAlt": "Steel watch photographed against a dark background"
     }
   },
   "styles": {
