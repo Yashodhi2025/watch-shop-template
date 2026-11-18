@@ -2,6 +2,7 @@ import { createServer } from 'node:http';
 import { readFile, mkdir } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 import { resolve, join, extname } from 'node:path';
+import { tmpdir } from 'node:os';
 
 export async function openBrowserSession({ basePath = '' } = {}) {
   const root = resolve('out');
@@ -31,7 +32,7 @@ export async function openBrowserSession({ basePath = '' } = {}) {
   });
   await new Promise(done => server.listen(0, '127.0.0.1', done));
   const origin = `http://127.0.0.1:${server.address().port}`;
-  const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check', '--remote-debugging-port=0', `--user-data-dir=${join(reportDir, `chrome-profile-${Date.now()}`)}`, 'about:blank'], { windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'] });
+  const chrome = spawn('C:/Program Files/Google/Chrome/Application/chrome.exe', ['--headless=new', '--disable-gpu', '--no-first-run', '--no-default-browser-check', '--remote-debugging-port=0', `--user-data-dir=${join(tmpdir(), `aurel-chrome-profile-${Date.now()}`)}`, 'about:blank'], { windowsHide: true, stdio: ['ignore', 'ignore', 'pipe'] });
   let socket;
   const close = () => { socket?.close(); chrome.kill(); server.close(); };
   try {

@@ -12,6 +12,7 @@
       "common.business.whatsapp",
       "common.business.email",
       "home.heroImageAlt",
+      "home.heroBackgroundImageAlt",
       "home.products[*].imageAlt",
       "home.collections[*].imageAlt",
       "home.storyImageAlt",
@@ -26,6 +27,29 @@
       "common.searchPlaceholder",
       "common.searchEmpty",
       "common.enquiryPrefix",
+      "home.heroWatch1ImageAlt",
+      "home.heroWatch1Scale",
+      "home.heroWatch1X",
+      "home.heroWatch1Y",
+      "home.heroWatch1Rotation",
+      "home.heroWatch1Visible",
+      "home.heroWatch2ImageAlt",
+      "home.heroWatch2Scale",
+      "home.heroWatch2X",
+      "home.heroWatch2Y",
+      "home.heroWatch2Rotation",
+      "home.heroWatch2Visible",
+      "home.heroWatch3ImageAlt",
+      "home.heroWatch3Scale",
+      "home.heroWatch3X",
+      "home.heroWatch3Y",
+      "home.heroWatch3Rotation",
+      "home.heroWatch3Visible",
+      "home.heroWatch1ThumbnailAlt",
+      "home.heroWatch2ThumbnailAlt",
+      "home.heroWatch3ThumbnailAlt",
+      "home.heroPauseLabel",
+      "home.heroPlayLabel",
       "home.allLabel",
       "home.collectionCta",
       "home.emailPlaceholder",
@@ -124,7 +148,16 @@
       "about.editorialImageAlt",
       "checkout.contactLabel",
       "about.craftImageAlt",
-      "about.designImageAlt"
+      "about.designImageAlt",
+      "contact.heroImageAlt",
+      "contact.detailImageAlt",
+      "contact.setupLabel",
+      "contact.validationLabel",
+      "contact.messageTitle",
+      "contact.numberLabel",
+      "contact.businessEmail",
+      "contact.emailSubject",
+      "contact.emailSetupLabel"
     ]
   },
   "siteDataFile": "src/data/site-data.json",
@@ -177,6 +210,12 @@
       "id": "about",
       "label": "Our Story",
       "route": "/about",
+      "required": true
+    },
+    {
+      "id": "contact",
+      "label": "Contact & Concierge",
+      "route": "/contact",
       "required": true
     }
   ],
@@ -484,10 +523,131 @@
         "pageKey": "home",
         "fields": [
           {
-            "key": "nextJsLogoImage",
+            "key": "heroBackgroundImage",
             "type": "image",
-            "label": "Next Js Logo Image"
+            "label": "Campaign background — separate image"
           },
+          {
+            "key": "heroBackgroundImageAlt",
+            "type": "text",
+            "label": "Hero Background Image Alt"
+          },
+          {
+            "key": "heroWatch1Image",
+            "type": "image",
+            "label": "Featured watch 1 — transparent PNG"
+          },
+          {
+            "key": "heroWatch1ImageAlt",
+            "type": "text",
+            "label": "Hero Watch 1 Image Alt"
+          },
+          {
+            "key": "heroWatch1Scale",
+            "type": "number",
+            "label": "Hero Watch 1 Scale"
+          },
+          {
+            "key": "heroWatch1X",
+            "type": "number",
+            "label": "Hero Watch 1 X Position"
+          },
+          {
+            "key": "heroWatch1Y",
+            "type": "number",
+            "label": "Hero Watch 1 Y Position"
+          },
+          {
+            "key": "heroWatch1Rotation",
+            "type": "number",
+            "label": "Hero Watch 1 Rotation"
+          },
+          {
+            "key": "heroWatch1Visible",
+            "type": "text",
+            "label": "Hero Watch 1 Visibility"
+          },
+          {
+            "key": "heroWatch2Image",
+            "type": "image",
+            "label": "Featured watch 2 — transparent PNG"
+          },
+          {
+            "key": "heroWatch2ImageAlt",
+            "type": "text",
+            "label": "Hero Watch 2 Image Alt"
+          },
+          {
+            "key": "heroWatch2Scale",
+            "type": "number",
+            "label": "Hero Watch 2 Scale"
+          },
+          {
+            "key": "heroWatch2X",
+            "type": "number",
+            "label": "Hero Watch 2 X Position"
+          },
+          {
+            "key": "heroWatch2Y",
+            "type": "number",
+            "label": "Hero Watch 2 Y Position"
+          },
+          {
+            "key": "heroWatch2Rotation",
+            "type": "number",
+            "label": "Hero Watch 2 Rotation"
+          },
+          {
+            "key": "heroWatch2Visible",
+            "type": "text",
+            "label": "Hero Watch 2 Visibility"
+          },
+          {
+            "key": "heroWatch3Image",
+            "type": "image",
+            "label": "Featured watch 3 — transparent PNG"
+          },
+          {
+            "key": "heroWatch3ImageAlt",
+            "type": "text",
+            "label": "Hero Watch 3 Image Alt"
+          },
+          {
+            "key": "heroWatch3Scale",
+            "type": "number",
+            "label": "Hero Watch 3 Scale"
+          },
+          {
+            "key": "heroWatch3X",
+            "type": "number",
+            "label": "Hero Watch 3 X Position"
+          },
+          {
+            "key": "heroWatch3Y",
+            "type": "number",
+            "label": "Hero Watch 3 Y Position"
+          },
+          {
+            "key": "heroWatch3Rotation",
+            "type": "number",
+            "label": "Hero Watch 3 Rotation"
+          },
+          {
+            "key": "heroWatch3Visible",
+            "type": "text",
+            "label": "Hero Watch 3 Visibility"
+          },
+          { "key": "heroWatch1Thumbnail", "type": "image", "label": "Watch 1 thumbnail (independent image)" },
+          { "key": "heroWatch1ThumbnailAlt", "type": "text", "label": "Watch 1 thumbnail alternative text" },
+          { "key": "heroWatch1Label", "type": "text", "label": "Watch 1 selector label" },
+          { "key": "heroPauseLabel", "type": "text", "label": "Pause watch rotation accessibility label" },
+          { "key": "heroPlayLabel", "type": "text", "label": "Resume watch rotation accessibility label" },
+          { "key": "heroWatch2Thumbnail", "type": "image", "label": "Watch 2 thumbnail (independent image)" },
+          { "key": "heroWatch2ThumbnailAlt", "type": "text", "label": "Watch 2 thumbnail alternative text" },
+          { "key": "heroWatch2Label", "type": "text", "label": "Watch 2 selector label" },
+          { "key": "heroWatch3Thumbnail", "type": "image", "label": "Watch 3 thumbnail (independent image)" },
+          { "key": "heroWatch3ThumbnailAlt", "type": "text", "label": "Watch 3 thumbnail alternative text" },
+          { "key": "heroWatch3Label", "type": "text", "label": "Watch 3 selector label" },
           {
             "key": "title",
             "type": "text",
@@ -822,8 +982,8 @@
           },
           {
             "key": "price",
-            "type": "text",
-            "label": "Price"
+            "type": "number",
+            "label": "Price (LKR)"
           },
           {
             "key": "image",
@@ -943,8 +1103,8 @@
           },
           {
             "key": "price",
-            "type": "text",
-            "label": "Price"
+            "type": "number",
+            "label": "Price (LKR)"
           },
           {
             "key": "image",
@@ -1608,6 +1768,8 @@
             "type": "text",
             "label": "phoneLabel"
           },
+          { "key": "phonePlaceholder", "type": "text", "label": "Sri Lankan phone format example" },
+          { "key": "addressPlaceholder", "type": "textarea", "label": "Sri Lankan delivery address format" },
           {
             "key": "addressLabel",
             "type": "text",
@@ -1826,6 +1988,173 @@
             "key": "designImageAlt",
             "type": "text",
             "label": "designImageAlt"
+          }
+        ]
+      },
+      {
+        "id": "contact",
+        "path": "contact",
+        "pageKey": "contact",
+        "type": "object",
+        "label": "Contact & Concierge",
+        "fields": [
+          {
+            "key": "eyebrow",
+            "type": "text",
+            "label": "eyebrow"
+          },
+          {
+            "key": "title",
+            "type": "text",
+            "label": "title"
+          },
+          {
+            "key": "introduction",
+            "type": "textarea",
+            "label": "introduction"
+          },
+          {
+            "key": "heroImage",
+            "type": "image",
+            "label": "heroImage"
+          },
+          {
+            "key": "heroImageAlt",
+            "type": "text",
+            "label": "heroImageAlt"
+          },
+          {
+            "key": "supportEyebrow",
+            "type": "text",
+            "label": "supportEyebrow"
+          },
+          {
+            "key": "supportTitle",
+            "type": "text",
+            "label": "supportTitle"
+          },
+          {
+            "key": "supportDescription",
+            "type": "textarea",
+            "label": "supportDescription"
+          },
+          {
+            "key": "detailImage",
+            "type": "image",
+            "label": "detailImage"
+          },
+          {
+            "key": "detailImageAlt",
+            "type": "text",
+            "label": "detailImageAlt"
+          },
+          {
+            "key": "imageCaption",
+            "type": "text",
+            "label": "imageCaption"
+          },
+          {
+            "key": "privacyNote",
+            "type": "textarea",
+            "label": "privacyNote"
+          },
+          {
+            "key": "formTitle",
+            "type": "text",
+            "label": "formTitle"
+          },
+          {
+            "key": "nameLabel",
+            "type": "text",
+            "label": "nameLabel"
+          },
+          {
+            "key": "emailLabel",
+            "type": "text",
+            "label": "emailLabel"
+          },
+          {
+            "key": "categoryLabel",
+            "type": "text",
+            "label": "categoryLabel"
+          },
+          {
+            "key": "categoryPlaceholder",
+            "type": "text",
+            "label": "categoryPlaceholder"
+          },
+          {
+            "key": "messageLabel",
+            "type": "text",
+            "label": "messageLabel"
+          },
+          {
+            "key": "categories",
+            "type": "list",
+            "label": "Enquiry categories",
+            "itemLabel": "Category",
+            "fields": [
+              {
+                "key": "label",
+                "type": "text",
+                "label": "Category label"
+              }
+            ]
+          },
+          {
+            "key": "submitLabel",
+            "type": "text",
+            "label": "submitLabel"
+          },
+          {
+            "key": "numberLabel",
+            "type": "text",
+            "label": "numberLabel"
+          },
+          {
+            "key": "messageTitle",
+            "type": "text",
+            "label": "messageTitle"
+          },
+          {
+            "key": "handoffNote",
+            "type": "textarea",
+            "label": "handoffNote"
+          },
+          {
+            "key": "validationLabel",
+            "type": "text",
+            "label": "validationLabel"
+          },
+          {
+            "key": "setupLabel",
+            "type": "text",
+            "label": "setupLabel"
+          },
+          {
+            "key": "businessEmail",
+            "type": "email",
+            "label": "businessEmail"
+          },
+          {
+            "key": "emailActionLabel",
+            "type": "text",
+            "label": "emailActionLabel"
+          },
+          {
+            "key": "emailSubject",
+            "type": "text",
+            "label": "emailSubject"
+          },
+          {
+            "key": "emailSetupLabel",
+            "type": "text",
+            "label": "emailSetupLabel"
+          },
+          {
+            "key": "emailHandoffNote",
+            "type": "textarea",
+            "label": "emailHandoffNote"
           }
         ]
       }

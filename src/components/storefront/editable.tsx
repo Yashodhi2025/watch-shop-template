@@ -2,6 +2,7 @@
 
 import { EditableImage, EditableText, useComponentStyle, useSiteData, withBasePath } from "@deneb-ui/ui";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
+import { displayPrice } from "./localization";
 
 export function atPath(value: unknown, path: string): unknown {
   return path.replace(/\[(\d+)\]/g, ".$1").split(".").reduce<unknown>((current, key) =>
@@ -25,14 +26,15 @@ export function useContent() {
 export function Text({ path: suppliedPath, "data-preview-field-path": fieldPath, fallback = "Discover", id, ...props }: Omit<ComponentProps<typeof EditableText>, "id"> & { path?: string; fallback?: string; id?: string }) {
   const path = fieldPath || suppliedPath || "";
   const { text } = useContent();
-  const element = <EditableText {...props} data-preview-field-path={path}>{text(path, fallback)}</EditableText>;
+  const value = text(path, fallback);
+  const element = <EditableText {...props} data-preview-field-path={path}>{/^home\.(products|arrivals)\[\d+\]\.price$/.test(path) ? displayPrice(value) : value}</EditableText>;
   return id ? <div id={id} style={{ display: "contents" }}>{element}</div> : element;
 }
 
 const anchors = new Set(["#top", "#featured", "#collections", "#story", "#arrivals", "#reviews", "#newsletter", "#contact", "#watch-story"]);
 export function safeHref(raw: string, fallback = "#contact") {
   if (anchors.has(raw)) return raw;
-  if (/^\/(?:about\/?|checkout\/?|cart\/?|shop\/?|collections\/?|products\/detail\/?)?(?:[?#].*)?$/.test(raw)) return withBasePath(raw);
+  if (/^\/(?:contact\/?|about\/?|checkout\/?|cart\/?|shop\/?|collections\/?|products\/detail\/?)?(?:[?#].*)?$/.test(raw)) return withBasePath(raw);
   if (/^https?:\/\//i.test(raw)) return raw;
   if (/^mailto:[^\s@]+@[^\s@]+\.[^\s@]+$/i.test(raw)) return raw;
   return fallback;

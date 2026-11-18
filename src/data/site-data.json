@@ -22,7 +22,8 @@
         "product_link",
         "cart",
         "checkout",
-        "about"
+        "about",
+        "contact"
       ],
       "theme": {
         "primaryColor": "#101A2B",
@@ -55,7 +56,8 @@
       "product_link",
       "cart",
       "checkout",
-      "about"
+      "about",
+      "contact"
     ],
     "requiredFeatures": []
   },
@@ -117,7 +119,7 @@
       "supportLinks": [
         {
           "label": "Contact & concierge",
-          "href": "#contact"
+          "href": "/contact/"
         },
         {
           "label": "Delivery & returns",
@@ -140,20 +142,53 @@
       ],
       "socialNote": "Social destinations are placeholders in this preview.",
       "homeUrl": "/",
-      "headerCtaUrl": "#contact",
+      "headerCtaUrl": "/contact/",
       "navUrls": {
         "home": "/",
         "shop": "/shop/",
         "collections": "/collections/",
         "about": "/about/",
-        "contact": "/#contact"
+        "contact": "/contact/"
       },
       "routingLabel": "Discover the timepiece",
       "routingNote": "Explore the details and speak to our concierge.",
       "routingCta": "Continue to Shop"
     },
     "home": {
-      "nextJsLogoImage": "/images/watch-hero.webp",
+      "heroBackgroundImage": "/images/hero-background.webp",
+      "heroBackgroundImageAlt": "Abstract navy and gold light for the AUREL campaign",
+      "heroWatch1Image": "/images/watch-black.png",
+      "heroWatch1ImageAlt": "Black AUREL chronograph watch with gold hands",
+      "heroWatch1Scale": 1,
+      "heroWatch1X": 0,
+      "heroWatch1Y": 0,
+      "heroWatch1Rotation": 0,
+      "heroWatch1Visible": "true",
+      "heroWatch2Image": "/images/watch-silver.png",
+      "heroWatch2ImageAlt": "Silver AUREL wristwatch",
+      "heroWatch2Scale": 1,
+      "heroWatch2X": 0,
+      "heroWatch2Y": 0,
+      "heroWatch2Rotation": 0,
+      "heroWatch2Visible": "true",
+      "heroWatch3Image": "/images/watch-blue.png",
+      "heroWatch3ImageAlt": "Blue AUREL wristwatch",
+      "heroWatch3Scale": 1,
+      "heroWatch3X": 0,
+      "heroWatch3Y": 0,
+      "heroWatch3Rotation": 0,
+      "heroWatch3Visible": "true",
+      "heroWatch1Thumbnail": "/images/watch-black.png",
+      "heroWatch1ThumbnailAlt": "Black chronograph selection preview",
+      "heroWatch1Label": "Black chronograph",
+      "heroPauseLabel": "Pause watch rotation",
+      "heroPlayLabel": "Resume watch rotation",
+      "heroWatch2Thumbnail": "/images/watch-silver.png",
+      "heroWatch2ThumbnailAlt": "Silver watch selection preview",
+      "heroWatch2Label": "Silver edition",
+      "heroWatch3Thumbnail": "/images/watch-blue.png",
+      "heroWatch3ThumbnailAlt": "Blue chronograph selection preview",
+      "heroWatch3Label": "Blue chronograph",
       "title": "Timeless by Design.",
       "subtitle": "For the moments that matter. Discover exceptional timepieces where precision meets a quietly distinctive point of view.",
       "templatesUrl": "#featured",
@@ -195,7 +230,7 @@
         {
           "name": "Heritage Automatic",
           "collection": "Classic",
-          "price": "$2,450",
+          "price": 2450,
           "image": "/images/watch-classic.webp",
           "imageAlt": "Heritage Automatic, luxury classic timepiece",
           "description": "A refined expression of everyday elegance.",
@@ -253,7 +288,7 @@
         {
           "name": "Navigator Steel",
           "collection": "Sport",
-          "price": "$3,150",
+          "price": 3150,
           "image": "/images/watch-sport.webp",
           "imageAlt": "Navigator Steel, luxury sport timepiece",
           "description": "Purposeful engineering with a distinctive steel finish.",
@@ -311,7 +346,7 @@
         {
           "name": "Méridian Chronograph",
           "collection": "Chronograph",
-          "price": "$3,850",
+          "price": 3850,
           "image": "/images/watch-hero.webp",
           "imageAlt": "Méridian Chronograph, luxury chronograph timepiece",
           "description": "Precise timing, beautifully considered.",
@@ -369,7 +404,7 @@
         {
           "name": "Atelier No. 01",
           "collection": "Limited Edition",
-          "price": "$5,200",
+          "price": 5200,
           "image": "/images/watch-limited.webp",
           "imageAlt": "Atelier No. 01, luxury limited edition timepiece",
           "description": "For those who see the extraordinary in the details.",
@@ -477,7 +512,7 @@
         {
           "name": "Coastal Blue",
           "collection": "Sport",
-          "price": "$2,850",
+          "price": 2850,
           "image": "/images/watch-chrono.webp",
           "imageAlt": "Coastal Blue, luxury sport timepiece",
           "description": "A deep blue dial made for new horizons.",
@@ -535,7 +570,7 @@
         {
           "name": "Atelier Obsidian",
           "collection": "Limited Edition",
-          "price": "$4,650",
+          "price": 4650,
           "image": "/images/watch-editorial.webp",
           "imageAlt": "Atelier Obsidian, luxury limited edition timepiece",
           "description": "Quiet confidence in an all-black expression.",
@@ -593,7 +628,7 @@
         {
           "name": "Heritage Reserve",
           "collection": "Classic",
-          "price": "$3,400",
+          "price": 3400,
           "image": "/images/watch-sport.webp",
           "imageAlt": "Reference watch photograph with a dark dial and a steel bracelet",
           "description": "Classic proportions. A fresh perspective.",
@@ -651,7 +686,7 @@
         {
           "name": "Méridian Rose",
           "collection": "Chronograph",
-          "price": "$4,200",
+          "price": 4200,
           "image": "/images/watch-limited.webp",
           "imageAlt": "Reference watch photograph with a dark dial, gold-toned accents and a woven strap",
           "description": "Warm metallic details and mechanical character.",
@@ -751,12 +786,12 @@
       "eyebrow": "THE AUREL CATALOG",
       "title": "Find your next chapter.",
       "description": "Explore our considered selection of timepieces. Find the design, character and collection that speak to you.",
-      "note": "An illustrative catalog. Prices are shown in USD; photography shows reference timepieces.",
+      "note": "An illustrative catalog. Prices are shown in LKR; photography shows reference timepieces.",
       "searchLabel": "Search timepieces",
       "searchPlaceholder": "Search by watch name",
       "collectionLabel": "Collection",
       "allCollectionsLabel": "All collections",
-      "priceLabel": "Price range · USD",
+      "priceLabel": "Price range · LKR",
       "minimumPriceLabel": "Minimum price",
       "maximumPriceLabel": "Maximum price",
       "minimumPlaceholder": "From",
@@ -840,7 +875,7 @@
       "summaryTitle": "Your selection",
       "itemsLabel": "Items",
       "subtotalLabel": "Subtotal",
-      "note": "USD reference prices. Delivery and taxes are not calculated. Watches with unconfirmed prices cannot be added.",
+      "note": "LKR reference prices. Delivery and taxes are not calculated. Watches with unconfirmed prices cannot be added.",
       "checkoutNote": "Continue to WhatsApp to enquire about your selection. No order is confirmed and no payment is taken.",
       "continueLabel": "Continue shopping",
       "continueUrl": "/shop/",
@@ -853,17 +888,19 @@
       "title": "A conversation, beautifully considered.",
       "nameLabel": "Customer name",
       "phoneLabel": "Phone number",
-      "addressLabel": "Delivery address",
+      "addressLabel": "Delivery address (Sri Lanka)",
+      "phonePlaceholder": "077 123 4567 or +94 77 123 4567",
+      "addressPlaceholder": "House / building no., street\nCity / district, postal code\nSri Lanka",
       "notesLabel": "Notes (optional)",
       "summaryTitle": "Your selected timepieces",
       "subtotalLabel": "Estimated subtotal",
-      "priceNote": "USD reference prices only. Taxes, delivery, availability and final pricing must be confirmed with the boutique. Unpriced items are excluded from the estimate.",
+      "priceNote": "LKR reference prices only. Taxes, delivery, availability and final pricing must be confirmed with the boutique. Unpriced items are excluded from the estimate.",
       "priceUnknown": "Price on request",
       "enquiryNote": "This is an enquiry only, not a confirmed order or payment.",
       "submitLabel": "Continue to WhatsApp",
       "handoffNote": "WhatsApp opens with a prepared message. Review and send it yourself. Your cart stays saved; no message is sent automatically.",
-      "setupLabel": "WhatsApp enquiry is not configured. The boutique must set a valid international WhatsApp number, including its country code.",
-      "validationLabel": "Please complete the required fields and enter a valid phone number.",
+      "setupLabel": "WhatsApp enquiry is not configured. The boutique must set a valid Sri Lankan WhatsApp number (077 123 4567 or +94 77 123 4567).",
+      "validationLabel": "Please complete the required fields and enter a Sri Lankan phone number (077 123 4567 or +94 77 123 4567).",
       "emptyLabel": "Your bag is empty.",
       "whatsappNumber": "94771234567",
       "messageTitle": "AUREL TIMEPIECES - Watch enquiry",
@@ -897,6 +934,48 @@
       "craftImageAlt": "Close view of an ivory watch dial and mechanical details",
       "designImage": "/images/watch-sport.webp",
       "designImageAlt": "Steel watch photographed against a dark background"
+    },
+    "contact": {
+      "eyebrow": "AUREL CONCIERGE",
+      "title": "Time for a conversation.",
+      "introduction": "A closer look. A thoughtful question. Let us help you explore your next timepiece.",
+      "heroImage": "/images/watch-editorial.webp",
+      "heroImageAlt": "An editorial close-up of a watch dial",
+      "supportEyebrow": "A PERSONAL POINT OF VIEW",
+      "supportTitle": "Every detail deserves a conversation.",
+      "supportDescription": "Whether you are exploring a collection or looking for the finer details of a particular watch, share what you have in mind. Start your enquiry with our concierge on WhatsApp.",
+      "detailImage": "/images/watch-limited.webp",
+      "detailImageAlt": "A watch with a woven strap on a textured wooden surface",
+      "imageCaption": "The details that make it personal.",
+      "privacyNote": "Your details are used to prepare a WhatsApp message in your browser. This page does not store or submit them to a server.",
+      "formTitle": "How may we help?",
+      "nameLabel": "Your name",
+      "emailLabel": "Email address",
+      "categoryLabel": "Enquiry category",
+      "categoryPlaceholder": "Select an enquiry",
+      "messageLabel": "Your message",
+      "categories": [
+        {
+          "label": "Choosing a timepiece"
+        },
+        {
+          "label": "Product details & availability"
+        },
+        {
+          "label": "General enquiry"
+        }
+      ],
+      "submitLabel": "Continue to WhatsApp",
+      "numberLabel": "Business WhatsApp",
+      "messageTitle": "AUREL TIMEPIECES - Concierge enquiry",
+      "handoffNote": "WhatsApp opens with your prepared enquiry. Review and send it yourself. Opening WhatsApp does not send a message or confirm an order.",
+      "validationLabel": "Please complete the required fields and provide a valid email address.",
+      "setupLabel": "WhatsApp enquiries are not configured. Please ask the boutique to set a valid Sri Lankan business WhatsApp number (+94).",
+      "businessEmail": "nethmisathsarani2003aii@gmail.com",
+      "emailActionLabel": "Send Enquiry via Email",
+      "emailSubject": "AUREL TIMEPIECES - Concierge enquiry",
+      "emailSetupLabel": "Email enquiries are not configured. Please ask the boutique to set a valid business email address.",
+      "emailHandoffNote": "Your email application opens with a prepared enquiry. Review and send it yourself; no email is sent automatically."
     }
   },
   "styles": {
@@ -956,7 +1035,6 @@
     "common.socialLinks[1].label": {},
     "common.socialLinks[1].href": {},
     "common.socialNote": {},
-    "home.nextJsLogoImage": {},
     "home.templatesUrl": {},
     "home.learningUrl": {},
     "home.deployNowUrl": {},

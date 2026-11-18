@@ -3,6 +3,7 @@
 import { platformProductDetailHref, withBasePath } from "@deneb-ui/ui";
 import { useMemo } from "react";
 import { useContent } from "./editable";
+import { parsePrice } from "./localization";
 
 export type CatalogEntry = {
   id: string;
@@ -18,12 +19,7 @@ export type CatalogEntry = {
 };
 
 export function priceValue(value: unknown): number | null {
-  if (typeof value === "number") return Number.isFinite(value) && value >= 0 ? value : null;
-  if (typeof value !== "string" || !value.trim()) return null;
-  const normalized = value.replace(/[$,\s]/g, "");
-  if (!/^\d+(?:\.\d+)?$/.test(normalized)) return null;
-  const number = Number(normalized);
-  return Number.isFinite(number) ? number : null;
+  return parsePrice(value);
 }
 
 // Keep the original editable paths: the two existing, disjoint lists form one catalog.

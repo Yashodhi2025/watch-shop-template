@@ -1,4 +1,5 @@
 "use client";
+import {sriLankaPhone} from "./localization";
 
 import { EditableSection, useComponentStyle } from "@deneb-ui/ui";
 import { useRef, useState, type ReactNode } from "react";
@@ -30,8 +31,8 @@ export default function WatchDetailView({ entry, entries, fields, "data-preview-
   const { cssVars: gridStyles } = useComponentStyle("productDetails.relatedGrid", "grid");
   const email = text("common.business.email").trim();
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const phone = text("common.business.whatsapp").replace(/[\s()+.-]/g, "");
-  const validPhone = /^\d{7,15}$/.test(phone);
+  const phone = sriLankaPhone(text("common.business.whatsapp"));
+  const validPhone = !!phone;
   const message = `${text("productDetails.enquiryMessage", "I would like to know more about")} ${entry.name} (${text(`${entry.path}.reference`, entry.id)}).`;
   const related = entries.filter(item => item.id !== entry.id).sort((a, b) => Number(b.collection === entry.collection) - Number(a.collection === entry.collection) || a.featuredOrder - b.featuredOrder).slice(0, 4);
   const changeImage = (step: number) => setImageIndex((active + step + gallery.length + 1) % (gallery.length + 1));

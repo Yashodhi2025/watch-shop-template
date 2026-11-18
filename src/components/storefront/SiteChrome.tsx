@@ -4,7 +4,7 @@ import { EditableIcon } from "@deneb-ui/ui";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Arrow, EditLink, Photo, Text, safeHref, useContent } from "./editable";
 import { catalogProductHref, useCatalog } from "./catalog";
-const nav = [["home", "/"], ["shop", "/shop/"], ["collections", "/collections/"], ["about", "/about/"], ["contact", "/#contact"]];
+const nav = [["home", "/"], ["shop", "/shop/"], ["collections", "/collections/"], ["about", "/about/"], ["contact", "/contact/"]];
 function Mark() {
   return <svg className="brand-mark" width="32" height="36" viewBox="0 0 32 36" fill="none" aria-hidden="true"><path d="m3 29 13-24 13 24M8 22h16M11 29l5-10 5 10M16 0v5M0 32h32" stroke="currentColor" strokeWidth="1.25" /></svg>;
 }
@@ -18,7 +18,7 @@ function Brand() {
 }
 
 
-export default function SiteChrome({ page, selectedWatch = "", onEnquire, children }: { page: "home" | "shop" | "collections" | "product_link" | "cart" | "checkout" | "about"; selectedWatch?: string; onEnquire?: (name: string) => void; children: ReactNode }) {
+export default function SiteChrome({ page, selectedWatch = "", onEnquire, children }: { page: "home" | "shop" | "collections" | "product_link" | "cart" | "checkout" | "about" | "contact"; selectedWatch?: string; onEnquire?: (name: string) => void; children: ReactNode }) {
   const { text, list } = useContent();
   const [menuOpen, setMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -37,7 +37,7 @@ export default function SiteChrome({ page, selectedWatch = "", onEnquire, childr
   const enquire = (name: string) => { onEnquire?.(name); searchDialog.current?.close(); setMenuOpen(false); };
   const closeOnBackdrop = (event: React.MouseEvent<HTMLDialogElement>) => { if (event.target === event.currentTarget) event.currentTarget.close(); };
   return <div id="top" className="storefront" data-preview-page-key={page}>
-    <a className="skip-link" href={page === "about" ? "#about" : page === "checkout" ? "#checkout" : page === "cart" ? "#cart" : page === "home" ? "#featured" : page === "shop" ? "#catalog" : page === "product_link" ? "#watch-details" : "#collection-edit"} data-preview-static="accessibility">Skip to content</a>
+    <a className="skip-link" href={page === "contact" ? "#concierge" : page === "about" ? "#about" : page === "checkout" ? "#checkout" : page === "cart" ? "#cart" : page === "home" ? "#featured" : page === "shop" ? "#catalog" : page === "product_link" ? "#watch-details" : "#collection-edit"} data-preview-static="accessibility">Skip to content</a>
     <div className="announcement" data-design-section="announcement"><span className="announcement-spacer" /><Text data-preview-field-path="common.announcement" fallback="Discover the AUREL collection" /><span className="announcement-detail"><Text data-preview-field-path="common.announcementDetail" /></span></div>
     <header className="site-header" data-design-section="navigation">
       <div className="header-inner shell">

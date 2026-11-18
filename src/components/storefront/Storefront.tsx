@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { Arrow, EditLink, Photo, Text, safeHref, useContent } from "./editable";
 import { ArrivalWatch, FeaturedWatch } from "./WatchBindings";
 import SiteChrome from "./SiteChrome";
+import HeroSelector from "./HeroSelector";
 import { useCatalog } from "./catalog";
 function BenefitGlyph({ children }: { children: React.ReactNode }) {
   return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>;
@@ -13,7 +14,6 @@ const benefitIcons = {
   lock: <BenefitGlyph><rect x="5" y="10" width="14" height="11" rx="1" /><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3" /></BenefitGlyph>,
   truck: <BenefitGlyph><path d="M2 5h12v13H2zM14 10h5l3 4v4h-8" /><circle cx="6" cy="19" r="2" /><circle cx="18" cy="19" r="2" /></BenefitGlyph>,
 };
-
 
 export default function Storefront() {
   const { text, list } = useContent();
@@ -27,15 +27,7 @@ export default function Storefront() {
   const enquire = (name: string) => setSelectedWatch(name);
   return <SiteChrome page="home" selectedWatch={selectedWatch} onEnquire={enquire}>
     <main>
-      <EditableSection name="hero" padding="none" className="hero" aria-labelledby="hero-title">
-        <div className="hero-image-wrap"><Photo data-preview-field-path="home.nextJsLogoImage" altPath="home.heroImageAlt" className="hero-image" eager /><div className="hero-shade" /></div>
-        <div className="hero-content shell"><div className="hero-copy">
-          <div className="eyebrow hero-eyebrow"><span /><Text data-preview-field-path="home.pageTsx" fallback="THE ART OF TIME" /></div>
-          <Text data-preview-field-path="home.title" fallback="Timeless by Design." as="h1" id="hero-title" className="hero-title" />
-          <Text data-preview-field-path="home.subtitle" as="p" className="hero-description" fallback="Exceptional timepieces for the moments that matter." />
-          <div className="hero-ctas"><EditLink hrefPath="home.templatesUrl" labelPath="home.templatesLabel" className="button button-gold" arrow /><EditLink hrefPath="home.learningUrl" labelPath="home.learningLabel" fallbackHref="#story" className="text-link hero-story" /></div>
-        </div><div className="hero-bottom"><Text data-preview-field-path="home.heroEdition" /><span className="hero-line" /><Text data-preview-field-path="home.heroCaption" /><span className="hero-scroll" aria-hidden="true">&darr;</span></div></div>
-      </EditableSection>
+      <HeroSelector />
 
       <EditableSection name="benefits" padding="none" className="benefits">
         <div className="benefit-grid shell" data-preview-list-path="home.benefits">{list("home.benefits").map((_, index) => <div key={index} className="benefit" data-preview-item-path={`home.benefits[${index}]`}>
