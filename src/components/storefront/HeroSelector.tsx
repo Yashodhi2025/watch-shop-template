@@ -13,21 +13,20 @@ function recoverImage(event: SyntheticEvent<HTMLImageElement>, fallback: string)
 export default function HeroSelector() {
   const { data, text } = useContent();
   const [selection, setSelection] = useState(0);
+  const [previousSelection, setPreviousSelection] = useState(-1);
+  const [transitioning, setTransitioning] = useState(false);
   const [editing, setEditing] = useState(false);
   const [autoplay, setAutoplay] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
-  const [pageVisible, setPageVisible] = useState(true);
   const [rotationReset, setRotationReset] = useState(0);
   const thumbnails = useRef<HTMLDivElement>(null);
   const navigation = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const syncMotion = () => setReducedMotion(media.matches);
-    const syncVisibility = () => setPageVisible(!document.hidden);
-    syncMotion(); syncVisibility();
+    syncMotion();
     media.addEventListener("change", syncMotion);
-    document.addEventListener("visibilitychange", syncVisibility);
-    return () => { media.removeEventListener("change", syncMotion); document.removeEventListener("visibilitychange", syncVisibility); };
+    return () => media.removeEventListener("change", syncMotion);
   }, []);
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
@@ -35,12 +34,17 @@ export default function HeroSelector() {
       if (event.data?.type === "FIVORA_PREVIEW_EDIT_MODE") setEditing(event.data.editMode === true);
       if (event.data?.type === "FIVORA_PREVIEW_FOCUS_PAGE") {
         const match = /^home\.heroWatch([123])Image$/.exec(event.data.fieldPath || "");
-        if (match) setSelection(Number(match[1]) - 1);
+        if (match) {
+          const next = Number(match[1]) - 1;
+          setPreviousSelection(selection);
+          setSelection(next);
+          setTransitioning(next !== selection);
+        }
       }
     };
     window.addEventListener("message", onMessage);
     return () => window.removeEventListener("message", onMessage);
-  }, []);
+  }, [selection]);
   const settings = (index: number) => {
     const prefix = `home.heroWatch${index}`;
     const numeric = (suffix: string, fallback: number, min: number, max: number) => {
@@ -62,14 +66,30 @@ export default function HeroSelector() {
   const available = watches.flatMap((watch, index) => watch.visible ? [index] : []);
   const active = available.includes(selection) ? selection : (available[0] ?? -1);
   const availableKey = available.join(",");
-  const rotating = autoplay && !editing && !reducedMotion && pageVisible && available.length > 1;
+  const rotating = autoplay && !editing && !reducedMotion && available.length > 1;
   useEffect(() => {
     if (!rotating) return;
     const indices = availableKey.split(",").map(Number);
-    const timeout = window.setTimeout(() => setSelection(indices[(indices.indexOf(active) + 1) % indices.length]), 4000);
+    const timeout = window.setTimeout(() => {
+      const next = indices[(indices.indexOf(active) + 1) % indices.length];
+      setPreviousSelection(active);
+      setSelection(next);
+      setTransitioning(true);
+    }, 4000);
     return () => window.clearTimeout(timeout);
   }, [active, availableKey, rotating, rotationReset]);
-  const choose = (index: number) => { setSelection(index); setRotationReset(value => value + 1); };
+  useEffect(() => {
+    if (!transitioning) return;
+    const timeout = window.setTimeout(() => setTransitioning(false), 1100);
+    return () => window.clearTimeout(timeout);
+  }, [transitioning, selection]);
+  const choose = (index: number) => {
+    if (index === active) return;
+    setPreviousSelection(active);
+    setSelection(index);
+    setTransitioning(true);
+    setRotationReset(value => value + 1);
+  };
   const labels = [text("home.heroWatch1Label", "Black chronograph"), text("home.heroWatch2Label", "Silver edition"), text("home.heroWatch3Label", "Blue chronograph")];
   const move = (step: number, focus = false) => {
     if (!available.length) return;
@@ -104,7 +124,7 @@ export default function HeroSelector() {
       thumbnails.current?.querySelector<HTMLButtonElement>(`[data-watch-index="${next}"]`)?.focus();
     }
   };
-  return <EditableSection name="hero" padding="none" className="hero hero-selector" aria-labelledby="hero-title" data-hero-editing={editing ? "true" : "false"} data-autoplay={rotating ? "true" : "false"}
+  return <EditableSection name="hero" padding="none" className="hero hero-selector" aria-labelledby="hero-title" data-hero-editing={editing ? "true" : "false"} data-autoplay={rotating ? "true" : "false"} data-transitioning={transitioning ? "true" : "false"}
   >
     <div className="hero-image-wrap">
       <EditableImage data-preview-field-path="home.heroBackgroundImage" src={text("home.heroBackgroundImage", "/images/hero-background.webp")} alt={text("home.heroBackgroundImageAlt", "Navy campaign backdrop")} fallbackSrc="/images/hero-background.webp" onError={event => recoverImage(event, "/images/hero-background.webp")} fit="cover" className="hero-background-image" loading="eager" fetchPriority="high" />
@@ -118,15 +138,16 @@ export default function HeroSelector() {
         <div className="hero-ctas"><EditLink hrefPath="home.templatesUrl" labelPath="home.templatesLabel" className="button button-gold" arrow /><EditLink hrefPath="home.learningUrl" labelPath="home.learningLabel" fallbackHref="#story" className="text-link hero-story" /></div>
       </div>
       <div id="hero-featured-watch" className="hero-timepieces" data-active-watch={active}>
-        <div className="hero-watch-wrap hero-watch-one" data-active={active === 0} style={watches[0].style} aria-hidden={active !== 0} inert={active !== 0}>
+        <div className="hero-watch-wrap hero-watch-one" data-active={active === 0} data-exiting={transitioning && previousSelection === 0} style={watches[0].style} aria-hidden={active !== 0} inert={active !== 0}>
           <div className="hero-watch-motion"><EditableImage data-preview-static="hero-watch-1-image" src={text("home.heroWatch1Image", "/images/watch-black.png")} alt={text("home.heroWatch1ImageAlt", labels[0])} fallbackSrc="/images/watch-black.png" onError={event => recoverImage(event, "/images/watch-black.png")} fit="contain" className="hero-watch-image" loading="eager" decoding="async" /></div>
         </div>
-        <div className="hero-watch-wrap hero-watch-two" data-active={active === 1} style={watches[1].style} aria-hidden={active !== 1} inert={active !== 1}>
+        <div className="hero-watch-wrap hero-watch-two" data-active={active === 1} data-exiting={transitioning && previousSelection === 1} style={watches[1].style} aria-hidden={active !== 1} inert={active !== 1}>
           <div className="hero-watch-motion"><EditableImage data-preview-static="hero-watch-2-image" src={text("home.heroWatch2Image", "/images/watch-silver.png")} alt={text("home.heroWatch2ImageAlt", labels[1])} fallbackSrc="/images/watch-silver.png" onError={event => recoverImage(event, "/images/watch-silver.png")} fit="contain" className="hero-watch-image" loading="eager" decoding="async" /></div>
         </div>
-        <div className="hero-watch-wrap hero-watch-three" data-active={active === 2} style={watches[2].style} aria-hidden={active !== 2} inert={active !== 2}>
+        <div className="hero-watch-wrap hero-watch-three" data-active={active === 2} data-exiting={transitioning && previousSelection === 2} style={watches[2].style} aria-hidden={active !== 2} inert={active !== 2}>
           <div className="hero-watch-motion"><EditableImage data-preview-static="hero-watch-3-image" src={text("home.heroWatch3Image", "/images/watch-blue.png")} alt={text("home.heroWatch3ImageAlt", labels[2])} fallbackSrc="/images/watch-blue.png" onError={event => recoverImage(event, "/images/watch-blue.png")} fit="contain" className="hero-watch-image" loading="eager" decoding="async" /></div>
         </div>
+        <span className="hero-gold-sweep" aria-hidden="true" />
       </div>
       <div className="hero-selection">
         <div className="hero-thumbnails" ref={thumbnails} onKeyDown={onThumbnailKey}>
