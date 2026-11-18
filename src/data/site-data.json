@@ -17,6 +17,7 @@
     "structure": {
       "pages": [
         "home",
+        "intro",
         "shop",
         "collections",
         "product_link",
@@ -157,6 +158,11 @@
     "home": {
       "heroBackgroundImage": "/images/hero-background.webp",
       "heroBackgroundImageAlt": "Abstract navy and gold light for the AUREL campaign",
+      "introLogo": "AUREL",
+      "introTagline": "TIMEPIECES",
+      "introBackgroundColor": "#080d18",
+      "introDialColor": "#c4a46a",
+      "introDuration": 3,
       "heroWatch1Image": "/images/watch-black.png",
       "heroWatch1ImageAlt": "Black AUREL chronograph watch with gold hands",
       "heroWatch1Scale": 1,

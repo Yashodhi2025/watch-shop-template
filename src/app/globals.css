@@ -69,6 +69,50 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .hero-light { position: absolute; border-radius: 50%; pointer-events: none; }
 .hero-light-one { width: 65%; height: 110%; top: -28%; right: -8%; background: radial-gradient(ellipse,#bd955649 0%,#9b773d19 35%,transparent 65%); transform: rotate(-35deg); }
 .hero-light-two { width: 50%; height: 85%; bottom: -26%; right: 18%; background: radial-gradient(ellipse,#1d497d77,transparent 65%); }
+.aurel-intro-seen .aurel-cinematic-intro:not(.aurel-cinematic-intro-persistent) { display: none; }
+.aurel-cinematic-intro { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; overflow: hidden; background: radial-gradient(circle at 50% 48%,color-mix(in srgb,var(--intro-background,#080d18) 74%,#ffffff 26%) 0%,var(--intro-background,#080d18) 46%,#05080e 100%); color: #f6f3ed; pointer-events: none; animation: aurelIntroExit .55s cubic-bezier(.7,0,.2,1) calc(var(--intro-duration,3s) - .55s) both; }
+.aurel-intro-editor-page { position: fixed; inset: 0; z-index: 100; background: #05080e; }
+.aurel-cinematic-intro-persistent { z-index: 101; }
+.aurel-cinematic-intro-persistent:not(.aurel-cinematic-intro-previewing) { animation: none; pointer-events: none; }
+.aurel-cinematic-intro-persistent:not(.aurel-cinematic-intro-previewing) .aurel-intro-dial,
+.aurel-cinematic-intro-persistent:not(.aurel-cinematic-intro-previewing) .aurel-intro-logo,
+.aurel-cinematic-intro-persistent:not(.aurel-cinematic-intro-previewing) .aurel-intro-glow { animation: none; opacity: 1; }
+.aurel-cinematic-intro-persistent:not(.aurel-cinematic-intro-previewing) .aurel-intro-dial { transform: scale(.82); }
+.aurel-cinematic-intro-previewing { pointer-events: auto; animation: aurelIntroExit .55s cubic-bezier(.7,0,.2,1) calc(var(--intro-duration,3s) - .55s) both; }
+.aurel-intro-preview { position: absolute; z-index: 5; right: 28px; bottom: 28px; min-height: 44px; padding: 12px 18px; border: 1px solid #c4a46a88; background: #080d17d9; color: #ead9ad; font-size: 10px; letter-spacing: .08em; pointer-events: auto; }
+.aurel-cinematic-intro::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg,transparent 28%,#f1d89b18 48%,transparent 68%); transform: translateX(-120%); animation: aurelIntroLightSweep 2.2s cubic-bezier(.22,.75,.25,1) .25s both; pointer-events: none; }
+.aurel-intro-glow { position: absolute; width: min(520px,82vw); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle,#d7ba7442 0%,#b48b3d18 28%,transparent 68%); filter: blur(10px); animation: aurelIntroGlow 2.8s ease both; }
+.aurel-intro-dial { position: absolute; width: min(290px,58vw); aspect-ratio: 1; filter: drop-shadow(0 18px 28px #000b) drop-shadow(0 0 18px #c4a46a38); animation: aurelDialReveal 2.2s cubic-bezier(.16,1,.3,1) both; }
+.aurel-dial-ring { fill: rgba(8,13,23,.82); stroke: var(--intro-dial,#c4a46a); stroke-width: 2; }
+.aurel-dial-ring-inner { fill: none; stroke: color-mix(in srgb,var(--intro-dial,#c4a46a) 34%,transparent); stroke-width: 1; }
+.aurel-dial-tick { stroke: var(--intro-dial,#c4a46a); stroke-width: 1.5; stroke-linecap: round; }
+.aurel-hour-hand, .aurel-minute-hand { stroke: #f2dfb0; stroke-width: 5; stroke-linecap: round; transform-origin: 110px 110px; }
+.aurel-hour-hand { animation: aurelHourSettle 2.4s cubic-bezier(.16,1,.3,1) both; }
+.aurel-minute-hand { stroke-width: 3; animation: aurelMinuteSettle 2.2s cubic-bezier(.16,1,.3,1) both; }
+.aurel-second-hand { stroke: var(--intro-dial,#c4a46a); stroke-width: 1.4; stroke-linecap: round; transform-origin: 110px 110px; animation: aurelSecondSweep 1.5s steps(60,end) .35s both; }
+.aurel-second-hand circle { fill: var(--intro-dial,#c4a46a); stroke: none; }
+.aurel-intro-logo { position: absolute; z-index: 2; display: flex; flex-direction: column; align-items: center; opacity: 0; transform: translateY(18px) scale(.96); animation: aurelIntroLogo 1.15s cubic-bezier(.16,1,.3,1) 1.15s both; text-shadow: 0 8px 30px #000; }
+.aurel-intro-name { --deneb-font-family: var(--heading-font, Manrope, sans-serif); --deneb-font-size: clamp(38px,7vw,68px); --deneb-line-height: 1; --deneb-letter-spacing: .24em; margin-right: -.24em; }
+.aurel-intro-subtitle { --deneb-color: #dfc58e; --deneb-font-size: clamp(8px,1.4vw,12px); --deneb-letter-spacing: .52em; margin-top: 12px; margin-right: -.52em; }
+/* The visible editable leaves opt back into hits; decoration cannot mask them. */
+.aurel-cinematic-intro-persistent .aurel-intro-name,
+.aurel-cinematic-intro-persistent .aurel-intro-subtitle,
+.aurel-cinematic-intro-persistent .aurel-intro-dial { pointer-events: auto; }
+.aurel-intro-skip { position: absolute; z-index: 3; right: 28px; bottom: 28px; min-width: 72px; height: 40px; border: 1px solid #c4a46a66; background: #080d17a8; color: #ead9ad; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; pointer-events: auto; transition: border-color .2s, background .2s; }
+.aurel-intro-skip:hover { border-color: #c4a46a; background: #101a2bde; }
+@keyframes aurelIntroExit { to { opacity: 0; visibility: hidden; } }
+@keyframes aurelIntroLightSweep { 0% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+@keyframes aurelIntroGlow { 0% { opacity: 0; transform: scale(.72); } 32% { opacity: 1; } 100% { opacity: .72; transform: scale(1.08); } }
+@keyframes aurelDialReveal { 0% { opacity: 0; transform: rotateY(28deg) scale(.82); } 48% { opacity: 1; } 100% { opacity: .16; transform: rotateY(0deg) scale(.58) translateY(-12px); } }
+@keyframes aurelHourSettle { from { transform: rotate(-35deg); } to { transform: rotate(8deg); } }
+@keyframes aurelMinuteSettle { from { transform: rotate(-80deg); } to { transform: rotate(18deg); } }
+@keyframes aurelSecondSweep { from { transform: rotate(-30deg); } to { transform: rotate(330deg); } }
+@keyframes aurelIntroLogo { 0% { opacity: 0; filter: blur(8px); transform: translateY(18px) scale(.96); } 100% { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); } }
+@media (max-width:480px) {
+  .aurel-intro-dial { width: min(250px,68vw); }
+  .aurel-intro-name { --deneb-font-size: clamp(34px,11vw,48px); }
+  .aurel-intro-skip { right: 16px; bottom: 18px; }
+}
 /* Empty layout space passes clicks through to the background; only the actual
    copy and image elements receive hits. Keep image paths on IMG nodes for Fivora. */
 /* The featured image and the chooser occupy separate grid cells. Empty space
@@ -636,6 +680,7 @@ html.dark .detail-story { background: var(--deneb-section-bg,var(--card-bg,#1823
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .aurel-cinematic-intro:not(.aurel-cinematic-intro-persistent) { display: none !important; }
 }
 
 .bag-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(260px,1fr);gap:48px;margin-top:40px}.bag-row{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:24px;padding:24px 0;border-bottom:1px solid var(--border-color)}.bag-row img{width:110px;height:130px;object-fit:cover}.bag-row>div{display:flex;flex-direction:column;gap:12px}.bag-quantity{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.bag-quantity button{min-width:40px;min-height:40px;background:transparent;border:1px solid var(--border-color)}.bag-summary{padding:28px;border:1px solid var(--border-color);align-self:start}.bag-summary h2{font-size:22px}.bag-summary p{display:flex;justify-content:space-between;gap:16px;margin:22px 0;font-size:12px;line-height:1.8}.bag-summary .button{width:100%}button:disabled{opacity:.45;cursor:not-allowed}@media(max-width:800px){.bag-layout{grid-template-columns:1fr;gap:30px}.bag-row{grid-template-columns:80px minmax(0,1fr);gap:16px}.bag-row img{width:80px;height:100px}.bag-row>strong{grid-column:2}}

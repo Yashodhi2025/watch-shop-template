@@ -1,11 +1,12 @@
 "use client";
 import { EditableIcon, EditableSection } from "@deneb-ui/ui";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Arrow, EditLink, Photo, Text, safeHref, useContent } from "./editable";
 import { ArrivalWatch, FeaturedWatch } from "./WatchBindings";
 import SiteChrome from "./SiteChrome";
 import HeroSelector from "./HeroSelector";
 import { useCatalog } from "./catalog";
+import { safeIntroColor } from "./IntroAnimation";
 function BenefitGlyph({ children }: { children: React.ReactNode }) {
   return <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>;
 }
@@ -15,18 +16,72 @@ const benefitIcons = {
   truck: <BenefitGlyph><path d="M2 5h12v13H2zM14 10h5l3 4v4h-8" /><circle cx="6" cy="19" r="2" /><circle cx="18" cy="19" r="2" /></BenefitGlyph>,
 };
 
+
 export default function Storefront() {
   const { text, list } = useContent();
   const [activeCollection, setActiveCollection] = useState("");
   const [selectedWatch, setSelectedWatch] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [introVisible, setIntroVisible] = useState(true);
+  const [introEditing, setIntroEditing] = useState(false);
   const emailInput = useRef<HTMLInputElement>(null);
+  const introGateStarted = useRef(false);
+  const introDuration = Math.max(1, Math.min(10, Number(text("home.introDuration", "3")) || 3));
+  useEffect(() => {
+    if (introGateStarted.current) return;
+    introGateStarted.current = true;
+    const key = "aurel-cinematic-intro-v1";
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    try {
+      if (sessionStorage.getItem(key) === "seen" || media.matches) setIntroVisible(false);
+      else sessionStorage.setItem(key, "seen");
+    } catch {}
+  }, []);
+  useEffect(() => {
+    const onEditMessage = (event: MessageEvent) => {
+      if (event.source !== window.parent) return;
+      if (event.data?.type === "FIVORA_PREVIEW_EDIT_MODE") {
+        const editing = event.data.editMode === true;
+        setIntroEditing(editing);
+        if (editing) setIntroVisible(false);
+      }
+    };
+    window.addEventListener("message", onEditMessage);
+    return () => window.removeEventListener("message", onEditMessage);
+  }, []);
+  useEffect(() => {
+    if (!introVisible || introEditing) return;
+    const timeout = window.setTimeout(() => setIntroVisible(false), introDuration * 1000);
+    return () => window.clearTimeout(timeout);
+  }, [introVisible, introEditing, introDuration]);
   const products = list("home.products");
   const arrivals = list("home.arrivals");
   const catalog = useCatalog();
   const enquire = (name: string) => setSelectedWatch(name);
+  const introBackground = safeIntroColor(text("home.introBackgroundColor", "#080d18"), "#080d18");
+  const introDial = safeIntroColor(text("home.introDialColor", "#c4a46a"), "#c4a46a");
+  const introStyles = {"--intro-background":introBackground,"--intro-dial":introDial,"--intro-duration":`${introDuration}s`} as CSSProperties;
   return <SiteChrome page="home" selectedWatch={selectedWatch} onEnquire={enquire}>
     <main>
+      {introVisible && !introEditing && <div className="aurel-cinematic-intro" style={introStyles}>
+        <div className="aurel-intro-glow" aria-hidden="true" />
+        <svg className="aurel-intro-dial" viewBox="0 0 220 220">
+          <circle className="aurel-dial-ring" cx="110" cy="110" r="94" data-preview-field-path="home.introDialColor" />
+          <circle className="aurel-dial-ring aurel-dial-ring-inner" cx="110" cy="110" r="76" />
+          {Array.from({ length: 12 }, (_, index) => <line key={index} className="aurel-dial-tick" x1="110" y1="22" x2="110" y2={index % 3 === 0 ? "36" : "30"} transform={`rotate(${index * 30} 110 110)`} />)}
+          <line className="aurel-hour-hand" x1="110" y1="112" x2="110" y2="68" />
+          <line className="aurel-minute-hand" x1="110" y1="112" x2="110" y2="48" />
+          <g className="aurel-second-hand">
+            <line x1="110" y1="132" x2="110" y2="43" />
+            <circle cx="110" cy="110" r="4" />
+          </g>
+        </svg>
+        <div className="aurel-intro-logo">
+          <Text data-preview-field-path="home.introLogo" fallback="AUREL" className="aurel-intro-name" />
+          <Text data-preview-field-path="home.introTagline" fallback="TIMEPIECES" className="aurel-intro-subtitle" />
+        </div>
+        <button type="button" className="aurel-intro-skip" data-preview-field-path="home.introDuration" onClick={() => setIntroVisible(false)}><span data-preview-field-path="home.introBackgroundColor">Skip</span></button>
+      </div>}
       <HeroSelector />
 
       <EditableSection name="benefits" padding="none" className="benefits">

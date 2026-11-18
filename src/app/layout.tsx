@@ -14,6 +14,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{__html:`try{if(sessionStorage.getItem("aurel-cinematic-intro-v1")==="seen")document.documentElement.classList.add("aurel-intro-seen")}catch(e){}`}} />
+      </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Providers>{children}</Providers>
       </body>
