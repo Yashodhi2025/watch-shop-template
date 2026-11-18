@@ -138,6 +138,9 @@ export default function HeroSelector() {
         <div className="hero-ctas"><EditLink hrefPath="home.templatesUrl" labelPath="home.templatesLabel" className="button button-gold" arrow /><EditLink hrefPath="home.learningUrl" labelPath="home.learningLabel" fallbackHref="#story" className="text-link hero-story" /></div>
       </div>
       <div id="hero-featured-watch" className="hero-timepieces" data-active-watch={active}>
+        <span className="hero-orbit hero-orbit-outer" aria-hidden="true" />
+        <span className="hero-orbit hero-orbit-inner" aria-hidden="true" />
+        <span className="hero-glass-reflection" aria-hidden="true" />
         <div className="hero-watch-wrap hero-watch-one" data-active={active === 0} data-exiting={transitioning && previousSelection === 0} style={watches[0].style} aria-hidden={active !== 0} inert={active !== 0}>
           <div className="hero-watch-motion"><EditableImage data-preview-static="hero-watch-1-image" src={text("home.heroWatch1Image", "/images/watch-black.png")} alt={text("home.heroWatch1ImageAlt", labels[0])} fallbackSrc="/images/watch-black.png" onError={event => recoverImage(event, "/images/watch-black.png")} fit="contain" className="hero-watch-image" loading="eager" decoding="async" /></div>
         </div>
